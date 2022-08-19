@@ -1,0 +1,159 @@
+<!--https://bl.ocks.org/LemoNode/21d81ff82e80cbe4acbfee28ff060b11-->
+<html>
+<head>
+  <title>2 - contributions</title>
+<meta charset ="utf-8">
+<script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+
+<body>
+<link href="stylesheet.css" rel="stylesheet" type="text/css">
+
+<svg id="chart"></svg>
+
+<div class="caption">
+  <p> <a href="../clean_data/CONTRIB_PP_BY_DEST.csv" target="_blank">Get the raw data behind this visualisation</a> | <a href="https://www.statewatch.org/deportation-union-rights-accountability-and-the-eu-s-push-to-increase-forced-removals/" target="_blank">Link to full Deportation Union spreadsheet</a> </p>
+</div>
+<div class="caption">
+  <p>Frontex contributions for return operations per person by destination. To avoid distorted data, only destinations with at least 10 deported people (across the time period) were included. The 25 destinations with highest Frontex contribution rates per person as well as the overall average are shown.</p>
+</div>
+
+
+<script>
+
+var EUformat = d3.formatDefaultLocale({
+        "decimal": ",",
+        "thousands": ".",
+        "grouping": [3],
+        "currency": ["€", ""],
+        "dateTime": "%a %b %e %X %Y",
+        "date": "%d.%m.%Y",
+        "time": "%H:%M:%S",
+        "periods": ["AM", "PM"],
+        "days": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "shortDays": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        "shortMonths": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    })
+
+
+d3.csv("../clean_data/CONTRIB_PP_BY_DEST.csv").then(d => chart(d))
+
+function chart(csv) {
+
+  var data = csv.map(function(d) {
+            d.FX_CONTRIB_PP = +d.FX_CONTRIB_PP;
+            return d;})
+
+  console.log(data)
+
+	var svg = d3.select("#chart"),
+		margin = {top: 20, left: 100, bottom: 0, right: 15},
+		width = window.innerWidth - margin.left - margin.right,
+		height = window.innerHeight - margin.top - margin.bottom - 200;
+    // -100 height to leave space for the selector within iframe
+
+svg.attr("width", width + margin.left) // margin.right should stay empty
+  .attr("height", height +  margin.top) // margin.bottom should stay empty
+
+  var tooltip = d3.select("body")
+    .append("div")
+    .attr("class", "tooltip")
+
+	// var y = d3.scaleBand()
+	// 	.range([margin.top, height - margin.bottom])
+	// 	.padding(0.1)
+	// 	.paddingOuter(0.2)
+	// 	.paddingInner(0.2)
+
+  var x = d3.scaleBand()
+		.range([margin.left, width - margin.right])
+		.padding(0.1)
+		.paddingOuter(0.2)
+		.paddingInner(0.2)
+    .domain(data.map(function(d) { return d.iso; }));
+
+  // var x = d3.scaleLinear()
+	// 	.range([margin.left, width - margin.right])
+
+  var y = d3.scaleLinear()
+		.range([height - margin.bottom, margin.top])
+    .domain([0, d3.max(data, d =>d.FX_CONTRIB_PP)]);
+
+	var yAxis = svg.append("g")
+		.attr("transform", `translate(${margin.left},0)`)
+		.attr("class", "y-axis")
+
+	var xAxis = svg.append("g")
+		.attr("transform", `translate(0,${height -  margin.bottom})`)
+		.attr("class", "x-axis grey_labels")
+
+    var z = d3.scaleOrdinal()
+  		.range(['#7a6989', '#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#d5791f',
+      '#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989','#7a6989',])
+  		.domain(data.map(function(d) { return d.iso; }));
+
+      data.forEach(function(d) {
+        d.FX_CONTRIB_PP = +d.FX_CONTRIB_PP
+        return d
+      })
+
+      svg.selectAll(".y-axis")
+        .call(d3.axisLeft(y).tickFormat(EUformat.format("$,.0f")))
+
+      svg.selectAll(".x-axis")
+        .call(d3.axisBottom(x))
+
+      svg.selectAll("div")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("class", "bar")
+        .attr("width", x.bandwidth())
+        .attr("stroke","white")
+        .attr("stroke-width",0)
+        .attr("fill",d => z(d.iso))
+        .attr("x", d => x(d.iso))
+        .attr("y", d => y(d.FX_CONTRIB_PP))
+        .attr("height", d => height - y(d.FX_CONTRIB_PP))
+        .on("mouseover", function(d){
+
+              d3.select(this)
+              .attr("stroke","#333333")
+              .attr("stroke-width",0.8)
+              .attr("opacity", 1);
+
+              d3.select(".tooltip")
+              .style("left", d3.event.pageX + "px")
+              .style("top", d3.event.pageY + "px")
+              .style("display", "inline-block")
+              .html("<div class = 'tooltip-title'>" +
+                "Frontex contributions"+ "<br>"+
+                "per person deported"+ "<br>"+
+              "to " + "<strong>" + d.DEST +"</strong>" + "<br>" +
+              "</div>"+
+              "<div class = 'tooltip-content'>" +
+              "<strong>" + EUformat.format("$,.0f")(d.FX_CONTRIB_PP)+"</strong>" +"<br>"+
+              "</div>");
+
+           })
+           .on("mousemove", function(){
+             d3.select(".tooltip")
+             .style("left", d3.event.pageX + "px")
+             .style("top", d3.event.pageY + "px");
+           })
+           .on("mouseout",function(){
+             d3.select(".tooltip")
+             .style("display", "none");
+              d3.select(this)
+              .attr("stroke","white")
+              .attr("stroke-width",0);
+
+            })
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+body {
+	/* margin: auto;
+	width: 650px; */
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  margin: 0px; /*important so that margin calculations on iframes work*/
+	font-size: 15px; /*standart size on statewatch website*/
+}
+
+.plot{
+fill: #fff;
+}
+.line {
+  fill: none;
+  stroke-linejoin: round;
+  stroke-linecap:round;
+}
+.axis path{
+  fill: none;
+  }
+
+
+.tooltip {
+  /* font-family: sans-serif; */
+  margin-right: 5px;
+  font-size: 0.85rem;
+  position: absolute;
+  display: none;
+  background-color: white;
+  opacity: 0.95;
+  /* min-width: 80px;
+  max-width: 300px;
+  min-height: auto; */
+  /* background: none repeat scroll 0 0 #ffffff; */
+  border: none;
+  text-align: left;
+  border-radius: 2px;
+  box-shadow: 1px 1px 5px #7f7f7f;
+}
+
+.tooltip > div {
+	padding: 10px;
+}
+
+.tooltip-title {
+	background-color: #eee;
+	padding-bottom: 7px !important;
+	color: #444;
+}
+
+.tooltip-content {
+	padding-top: 7px !important;
+}
+
+.tick > text,
+text.sankey_label {
+  font-size: 0.85rem;
+}
+
+svg > text,
+.grey_labels > g > text  {
+  font-size: 0.8rem;
+  fill: #666;
+}
+
+.tick > line {
+  display: none;
+}
+
+.y-axis > path,
+.x-axis > path {
+  display: none;
+}
+/* .line{
+  opacity: 0.2
+}
+
+.line:hover {
+  opacity: 1;
+} */
+
+.caption > p {
+	color: #666;
+	font-size: 0.85rem
+}
+
+a {
+	color: #7e7292;
+}
+
+a:hover{
+	color: #715678;
+}
