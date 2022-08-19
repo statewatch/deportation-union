@@ -85,10 +85,10 @@ for(year in c(2018:2006)){
       Stopover, # <- almost never information there
       "Charter cost", # <- almost never information there
     ))%>%
-    # attempt to create numbers per operation (not disaggregated by member states)
+    ## attempt to create numbers per operation (not disaggregated by member states)
     mutate(ID = str_c(as.character(year), "_", as.character(Number)))%>%
     select(-Number)%>%
-    # check whether number or ROID are better measures
+    ## check whether number or ROID are better measures
     # group_by(Number)%>%
     # mutate(n_in_number = n())%>%
     # group_by(ROID)%>%
@@ -108,7 +108,7 @@ for(year in c(2018:2006)){
     #   TRUE ~ ROID
     # ))%>%
     # select(-n_in_roid, -n_in_number, -Number)%>%
-    # fix spelling mistakes
+    ## fix spelling mistakes
     mutate(MSNAME = case_when(
       grepl("Fronte", MSNAME, ignore.case = T) ~ "Frontex",
       grepl("UK", MSNAME) ~ "United Kingdom",
@@ -319,7 +319,7 @@ fx_staff<- read_excel("../raw_data/frontex_docs_converted/2019_DEST._MONIT._TYPE
   )%>%
   left_join(lookup_date_id_type, by = c("ROID", "OPTYPE"))
 
-# by ROID or ROID and MS? unclear how to connect
+# by ROID and MS
 escorts <- read_excel("../raw_data/frontex_docs_converted/2019_ESCORTS_OBSERVERS.xlsx", sheet = 10) %>%
   select(ROID = "RO Title",
          MSNAME ="MS/SAC",
@@ -330,7 +330,7 @@ escorts <- read_excel("../raw_data/frontex_docs_converted/2019_ESCORTS_OBSERVERS
   )%>%
   left_join(country_codes, by="MSNAME") %>%
   # some country-date-RO combinations have multiple rows
-  # maybe for different destinations, which they don't tell us?
+  # maybe for different destinations (not present in data)?
   # need to be aggregated
   group_by(ROID, MSISO, MSNAME)%>%
   summarize(across(c(N_ESC, N_ESC_LEAD, N_ESC_POOL, N_OBS), ~sum(., na.rm=T)))%>%
@@ -353,7 +353,7 @@ escorts <- read_excel("../raw_data/frontex_docs_converted/2019_ESCORTS_OBSERVERS
       mutate(UNIQUE_ID=str_c(ROID, MSISO))
   )
 
-# by ROID or ROID and MS? unclear how to connect
+# by ROID and MS
 monitors <- 
   # 2019
   # national monitors
@@ -363,7 +363,7 @@ monitors <-
          N_MONITORS = "Monitors  national")%>%
   left_join(country_codes, by="MSNAME")%>%
   # some country-date-RO combinations have multiple rows
-  # maybe for different destinations, which they don't tell us?
+  # maybe for different destinations (not present in data)?
   # need to be aggregated
   group_by(ROID, MSISO, MSNAME)%>%
   summarize(N_MONITORS = sum(N_MONITORS, na.rm = T))%>%
@@ -389,7 +389,7 @@ monitors <-
              N_MONITORS = "Monitors  national")%>%
       left_join(country_codes, by="MSNAME")%>%
       # some country-date-RO combinations have multiple rows
-      # maybe for different destinations, which they don't tell us?
+      # maybe for different destinations (not present in data)?
       # need to be aggregated
       group_by(ROID, MSISO, MSNAME)%>%
       summarize(N_MONITORS = sum(N_MONITORS, na.rm = T))%>%
@@ -545,7 +545,6 @@ OPERATIONS_BY_MS <-
   )
 
 write_csv(OPERATIONS_BY_MS, "../clean_data/OPERATIONS_BY_MS.csv")
-
 
 # should be zero:
 # OPERATIONS_BY_MS %>% group_by(MSISO, ID)%>%mutate(n=n())%>%filter(n>1)
