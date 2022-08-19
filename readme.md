@@ -8,13 +8,15 @@ as of Dec 5th 2021
 - 2017 nr. 110: escorts (1), (2) and (3) exist but only destinations and returnees (1) and (2).
 - 2015 row 4: returnees (3) has number, but total, (1) and (2) not, only destinations (1) and (2)
 
+August 19th: all above issues solved (see `deportations 2015, 2016, 2017 data - corrected.xlsx`)
+
 # Repository contents
 
 ## `raw_data`
 
 #### `deportation-union-data.xlsx` :
 
-Dataset from https://www.statewatch.org/deportation-union-rights-accountability-and-the-eu-s-push-to-increase-forced-removals/ **with small manual corrections** - so **don't replace with original file**, rather add data or corrections manually into this version.
+Dataset from https://www.statewatch.org/deportation-union-rights-accountability-and-the-eu-s-push-to-increase-forced-removals/ **with small manual corrections**, e.g. from `deportations 2015, 2016, 2017 data - corrected.xlsx` - so **don't replace with original file**, rather add data or corrections manually into this version.
 
 #### `frontex_docs_pdf`:
 
