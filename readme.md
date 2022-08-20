@@ -19,6 +19,7 @@ as of Aug 20th 2022:
 - observers are supplied only per operation in data obtained 08/22, not disaggregated by member state **-> no oberservers in OPERATIONS_BY_MS.csv** foe 2020 / 2021
 - "escorts from pool" no longer present in data obtained 08/22
 - "medical staff" not supplied from 2019 onwards
+- in the graph about frontex contributions, we need to add info about which years data this is based on
 
 # Repository contents
 

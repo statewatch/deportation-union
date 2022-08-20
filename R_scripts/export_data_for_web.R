@@ -86,7 +86,7 @@ N_RETURNEES_YEARS_MSNAME <- OPERATIONS_BY_DEST_MS %>%
               summarize(N_RETURNEES = sum(N_RETURNEES, na.rm = TRUE)))%>%
   # create each YEAR for each combo
   spread(key = YEAR, value = N_RETURNEES)%>%
-  mutate(across(c(`2006`:`2020`), ~replace_na(.,0)))%>%
+  mutate(across(c(`2006`:`2021`), ~replace_na(.,0)))%>%
   gather(-MSNAME, -DEST, key = YEAR, value = N_RETURNEES)%>%
   filter(N_RETURNEES > 0)%>%
   spread(key = MSNAME, value = N_RETURNEES)%>%
@@ -173,7 +173,7 @@ FX_CONTRIB_YEARS_MSNAME_TOTAL <- OPERATIONS_BY_MS %>%
   group_by(MSNAME, YEAR) %>%
   summarize(FX_CONTRIB = sum(FX_CONTRIB, na.rm = T))%>%
   spread(key = YEAR, value = FX_CONTRIB)%>%
-  mutate(across(c(`2006`:`2020`), ~replace_na(.,0)))%>%
+  mutate(across(c(`2006`:`2021`), ~replace_na(.,0)))%>%
   gather(-MSNAME, key = YEAR, value = FX_CONTRIB)%>%
   filter(FX_CONTRIB > 0)%>%
   spread(key = MSNAME, value = FX_CONTRIB)%>%
@@ -227,7 +227,7 @@ write_csv(FX_CONTRIB_YEARS_MSNAME, "../clean_data/FX_CONTRIB_YEARS_MSNAME.csv")
 #               mutate(FX_CONTRIB_PP = FX_CONTRIB / N_RETURNEES)%>%
 #               select(-N_RETURNEES, -FX_CONTRIB))%>%
 #   spread(key = YEAR, value = FX_CONTRIB_PP)%>%
-#   mutate(across(c(`2006`:`2020`), ~replace_na(.,0)))%>%
+#   mutate(across(c(`2006`:`2021`), ~replace_na(.,0)))%>%
 #   gather(-MSNAME, key = YEAR, value = FX_CONTRIB_PP)%>%
 #   filter(FX_CONTRIB_PP > 0)%>%
 #   spread(key = MSNAME, value = FX_CONTRIB_PP)%>%
