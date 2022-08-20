@@ -21,6 +21,12 @@ as of Aug 20th 2022:
 - "medical staff" not supplied from 2019 onwards
 - in the graph about frontex contributions, we need to add info about which years data this is based on
 
+## How to update
+
+- add all new data to the clean_data.R R_script
+- check the export_data_for_web.R script to include the most current year (search and replace fpr "2020"/"2021")
+- check the d3 visualisation codes to include the newest year in their data and axis
+
 # Repository contents
 
 ## `raw_data`

@@ -115,7 +115,7 @@ svg.attr("width", width + margin.left) // margin.right should stay empty
 		svg.selectAll(".y-axis").transition().duration(speed)
 			.call(d3.axisLeft(y).tickFormat(EUformat.format("$,.0f")))
 
-    x.domain([2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020]);
+    x.domain([2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021]);
     svg.selectAll(".x-axis").transition().duration(speed)
       .call(d3.axisBottom(x))
 
