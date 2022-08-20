@@ -243,9 +243,9 @@ rm(df, by_op, by_ms, by_dest, filepath, year, sheetnr)
 
 # READ AND WRANGLE DATA FROM CONVERTED PDFS
 # (YEARS 2019 AND 2020)
+# PDF OBTAINED IN DEC 2021
 ###########################################
 
-# total: 330 operations
 lookup_date_id_type <- read_excel("../raw_data/frontex_docs_converted/2019_DESTIN. per MS.xlsx") %>%
   select(DATE = "Date of Departure",
          ROID = "Operation ID")%>%
@@ -261,7 +261,9 @@ lookup_date_id_type <- read_excel("../raw_data/frontex_docs_converted/2019_DESTI
                                  ROID),
                         by = "ROID"))%>%
   mutate(DATE = as.Date(str_c(substr(DATE, 7,11),"/", substr(DATE, 4,5), "/", substr(DATE, 1,2))))%>%
-  unique()
+  unique() #%>%
+  ## filter out RO-01516 because it will be added with an updated date in data below
+  # filter(ROID != "RO-01516")
 
 # by ROID, MS and DEST
 destinations <- read_excel("../raw_data/frontex_docs_converted/2019_DESTIN. per MS.xlsx") %>%
@@ -289,7 +291,7 @@ destinations <- read_excel("../raw_data/frontex_docs_converted/2019_DESTIN. per 
     ))
 
 # by ROID and MS
-# OBS: VALUES FROM SEP ONWARDS MISSING
+# OBS: VALUES FROM SEP 2021 ONWARDS MISSING
 costs <- read_excel("../raw_data/frontex_docs_converted/2019_COSTS per MS.xlsx")%>%
   select(ROID = "RO",
          # OPTYPE = Type, better data from 2019_DEST._MONIT._TYPE_FXSTAFF.xlsx
@@ -407,15 +409,80 @@ monitors <-
                   left_join(country_codes, by="MSISO"),
                 by = c("ROID", "MSNAME", "MSISO")
       )
-    
   )
-
-
 
 ####
 # possibility to export specific (more detailed than others) file formats for 2019 and 2020 here
 # from here on data will only be used in ways that is possible across all years 
 ####
+
+# READ AND WRANGLE DATA FROM CONVERTED PDF
+# (YEARS 2020 and 2021)
+# PDF OBTAINED IN AUG 2022
+###########################################
+
+dest2021 <- read_csv("../raw_data/frontex_docs_converted/tabula-PAD-2022-00265-destinations2020.csv",
+                 col_names = c("DATE", "OPTYPE", "DEST", "ROID"))%>%
+            bind_rows(read_csv("../raw_data/frontex_docs_converted/tabula-PAD-2022-00265-destinations2021.csv",
+                               col_names = c("DATE", "OPTYPE", "DEST", "ROID")))%>%
+  ## RO-01516 has differing dates, see readme. make consistent
+  mutate(DATE = ifelse(ROID == "RO-01516", "14/10/2020", DATE))%>%
+            mutate(DATE = as.Date(str_c(substr(DATE, 7,11),"/", substr(DATE, 4,5), "/", substr(DATE, 1,2))))%>%
+            unique()%>%
+            filter(ROID != "ROID")%>%
+  mutate(DEST = str_replace_all(DEST, "Viet Nam", "Vietnam"))%>%
+## filter out voluntary return operations for now, as they are only present from 2020 onwards
+filter(OPTYPE != "VRD")
+
+costs2021 <- read_csv("../raw_data/frontex_docs_converted/tabula-PAD-2022-00265-costs2020.csv")%>%
+  bind_rows(read_csv("../raw_data/frontex_docs_converted/tabula-PAD-2022-00265-costs2021.csv"))%>%
+  dplyr::select(DATE = 1, FX_CONTRIB = 3)%>%
+  mutate(ROID = substr(DATE, 12, 99))%>%
+  filter(FX_CONTRIB != "TOTAL PAID")%>%
+  ## RO-01516 has differing dates, see readme. make consistent
+  mutate(DATE = ifelse(ROID == "RO-01516", "14/10/2020", DATE))%>%
+  mutate(DATE = as.Date(str_c(substr(DATE, 7,10),"/", substr(DATE, 4,5), "/", substr(DATE, 1,2))))%>%
+  mutate(FX_CONTRIB = as.numeric(str_remove_all(FX_CONTRIB, "[ ,€]")))
+
+ppl2021 <- read_csv("../raw_data/frontex_docs_converted/tabula-PAD-2022-00265-deportees2020.csv")%>%
+  bind_rows(read_csv("../raw_data/frontex_docs_converted/tabula-PAD-2022-00265-deportees2021.csv"))%>%
+  rename(DATE = 1, ROID = 2, MSNAME = 3, MSTYPE = 4, N_RETURNEES = 5)%>%
+  filter(grepl("RO", ROID))%>%
+  ## RO-01516 has differing dates, see readme. make consistent
+  mutate(DATE = ifelse(ROID == "RO-01516", "14/10/2020", DATE))%>%
+  mutate(N_RETURNEES = as.numeric(N_RETURNEES),
+         DATE = as.Date(str_c(substr(DATE, 7,10),"/", substr(DATE, 4,5), "/", substr(DATE, 1,2))))
+
+esc_monitors2021 <- read_csv("../raw_data/frontex_docs_converted/tabula-PAD-2022-00265-escortsmonitors2020.csv")%>%
+  rename(ROID = 1,
+         DATE = 2,
+         MSNAME = 3,
+         MSTYPE = 4,
+         N_ESC_LEAD = 5,
+         N_ESC = 6,
+         N_MONITORS_POOL = 7,
+         N_MONITORS = 8)%>%
+  bind_rows(read_csv("../raw_data/frontex_docs_converted/tabula-PAD-2022-00265-escortsmonitors2021.csv")%>%
+              rename(ROID = 1,
+                     DATE = 2,
+                     MSNAME = 3,
+                     MSTYPE = 4,
+                     N_ESC_LEAD = 5,
+                     N_ESC = 6,
+                     N_MONITORS_POOL = 7,
+                     N_MONITORS = 8))%>%
+  ## RO-01516 has differing dates, see readme. make consistent
+  mutate(DATE = ifelse(ROID == "RO-01516", "14/10/2020", DATE))%>%
+  mutate(DATE = as.Date(str_c(substr(DATE, 7,10),"/", substr(DATE, 4,5), "/", substr(DATE, 1,2))))
+  
+obs_fxstaff2021 <- read_csv("../raw_data/frontex_docs_converted/tabula-PAD-2022-00265-observers_fxstaff2020.csv")%>%
+  bind_rows(read_csv("../raw_data/frontex_docs_converted/tabula-PAD-2022-00265-observers_fxstaff2021.csv"))%>%
+  rename(DATE = 2, N_OBS = 3, N_FX_STAFF = 4)%>%
+  filter(ROID != "ROID")%>%
+  ## RO-01516 has differing dates, see readme. make consistent
+  mutate(DATE = ifelse(ROID == "RO-01516", "14/10/2020", DATE))%>%
+  mutate(DATE = as.Date(str_c(substr(DATE, 7,10),"/", substr(DATE, 4,5), "/", substr(DATE, 1,2))))%>%
+  mutate(across(c(N_OBS, N_FX_STAFF), ~ as.numeric(.)))
 
 
 # put it all into consistent shape 
@@ -434,7 +501,23 @@ OPERATIONS_BY_DEST_MS <- all_by_dest_ms %>%
                      ROWID = NA_character_,
                      N_ESC = as.numeric(NA),
                      N_ESC_LEAD = as.numeric(NA))
-  )
+  )%>%
+  # bind data from 2020, 2021
+  bind_rows(dest2021%>%
+              ## filter out entries with multiple destinations
+              ## as they lead to doubles when matched with old data from 2019
+              filter(!grepl("&", DEST))%>%
+              left_join(ppl2021)%>%
+              ## only add in data on escorts if the updated data from 2021/2022 is disaggregated by destination
+              #left_join(esc_monitors2021)%>%
+              # dplyr::select(-N_MONITORS_POOL, -N_MONITORS)%>%
+              dplyr::select(-OPTYPE, -MSTYPE)%>%
+              mutate(ID = ROID,
+                     MSNAME = str_replace_all(MSNAME, "The Netherlands", "Netherlands"))%>%
+              left_join(country_codes)
+              )%>%
+  ## filter out doubles for 2020
+  unique()
 
 write_csv(OPERATIONS_BY_DEST_MS, "../clean_data/OPERATIONS_BY_DEST_MS.csv")
 
@@ -542,7 +625,24 @@ OPERATIONS_BY_MS <-
              FX_CONTRIB,
              OPTYPE
       )
-  )
+  )%>%
+  #
+  # 2020 - 2021
+  # 
+  bind_rows(dest2021%>%
+              ## filter out entries with multiple destinations
+              ## as they lead to doubles when matched with old data from 2019
+              filter(!grepl("&", DEST))%>%
+              left_join(ppl2021)%>%
+              ## only add in data on escorts if the updated data from 2021/2022 is disaggregated by destination
+              left_join(esc_monitors2021)%>%
+              dplyr::select(-MSTYPE, -DEST)%>%
+              left_join(costs2021)%>%
+              ## in the below sum, +N_OBS should be added once disaggregated data is available
+              mutate(N_ESC_OBS_MED = N_ESC_LEAD+N_ESC)%>%
+              mutate(ID = ROID,
+                     MSNAME = str_replace_all(MSNAME, "The Netherlands", "Netherlands"))%>%
+              left_join(country_codes))
 
 write_csv(OPERATIONS_BY_MS, "../clean_data/OPERATIONS_BY_MS.csv")
 
@@ -590,8 +690,25 @@ OPERATIONS <- OPERATIONS_BY_MS %>%
          N_MEDS,
          N_OBS,
          N_MONITORS,
+         N_MONITORS_POOL,
          FX_CONTRIB
-  )
+  )%>%
+  # 
+  # 2020 and 2021
+  # 
+  bind_rows(op <- ppl2021%>%
+              group_by(ROID)%>%
+              summarize(N_RETURNEES = sum(N_RETURNEES, na.rm=T))%>%
+              full_join(dest2021%>%select(ROID, OPTYPE)%>%unique())%>%
+              full_join(esc_monitors2021%>%
+                          group_by(ROID)%>%
+                          summarize(across(where(is.numeric), ~ sum(., na.rm=T))))%>%
+              full_join(costs2021)%>%
+              full_join(obs_fxstaff2021)%>%
+              rename(ID = ROID)%>%
+              select(-DATE)%>%
+              mutate(N_ESC_OBS_MED = N_ESC_LEAD+N_ESC+N_OBS)
+              )
 
 write_csv(OPERATIONS, "../clean_data/OPERATIONS.csv")
 

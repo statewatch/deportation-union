@@ -10,6 +10,16 @@ as of Dec 5th 2021
 
 August 19th: all above issues solved (see `deportations 2015, 2016, 2017 data - corrected.xlsx`)
 
+as of Aug 20th 2022:
+
+- RO-01516: date was 2020-10-13 in the files obtained in 12/21, date is 2020-10-14 in some files obtained 08/22 and still 2020-10-13 in other files from 08/22. set to 2020-10-13 everywhere.
+- VRDS only included in data obtained in 08/22 (for years 2020 and 2021). not clear if VRD data is available for previous years upon request. excluded for now from datasets
+- data is aggregated by ROID, when an operation includes multiple destinations, no data is provided per destination. Confirmatory application about this has been registered on Aug 20th (same procedure as 2021). **-> operations with multiple destinations are missing for 2021 in OPERATIONS_BY_DEST_MS.csv for now**
+- "costs for AUT not available yet" in 2021 operations; no action taken so far, maybe exclude those operations?
+- observers are supplied only per operation in data obtained 08/22, not disaggregated by member state **-> no oberservers in OPERATIONS_BY_MS.csv** foe 2020 / 2021
+- "escorts from pool" no longer present in data obtained 08/22
+- "medical staff" not supplied from 2019 onwards
+
 # Repository contents
 
 ## `raw_data`
@@ -80,13 +90,14 @@ variables present in this data:
 - "ID": unique ID per operation (unofficial, created for internal use). Until 2018 the "ID" is made up of the year and "Number" from the spreadsheet, for 2019 and 2020 ROID's were used.
 - "OPTYPE": NRO, JRO etc.
 - "N_RETURNEES" : total across MS and DESTs
-- "N_ESC_OBS_MED" : total of escort (leader)s, observer, medical staff aggregated across MS. (Note: before 2018, data on escorts, observers, medical staff is only available as this aggregate, no disaggregated numbers on the different positions.)
+- "N_ESC_OBS_MED" : total of escort (leader)s, observer, medical staff aggregated across MS. (Note: before 2018, data on escorts, observers, medical staff is only available as this aggregate, no disaggregated numbers on the different positions. For )
 - "N_ESC": total escorts across MS and DESTs (mostly available only starting 2019)
 - "N_ESC_LEAD": total escort leaders across MS and DESTs (mostly available only starting 2019)
 - "N_FX_STAFF" : total of Frontex staff on operation
 - "N_MEDS" : total number of medical staff across MS (mostly available only starting 2019)
 - "N_OBS" : total number of observers across MS (mostly available only starting 2019)
-- "N_MONITORS" : total number of monitors across MS
+- "N_MONITORS" : total number of (national) monitors across MS
+- "N_MONITORS_POOL" : total number of monitors from pool
 - "FX_CONTRIB" : total financial contribution in € across MS
 
 variables **not** present in this data:
