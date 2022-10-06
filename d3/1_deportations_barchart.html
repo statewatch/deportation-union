@@ -15,7 +15,7 @@
 <svg id="chart"></svg>
 
 <div class="caption">
-  <p> <a href="../clean_data/N_RETURNEES_YEARS_MSNAME.csv" target="_blank">Get the raw data behind this visualisation</a> | <a href="https://www.statewatch.org/deportation-union-rights-accountability-and-the-eu-s-push-to-increase-forced-removals/" target="_blank">Link to full Deportation Union spreadsheet</a> </p>
+  <p> <a href="../clean_data/N_RETURNEES_YEARS_MSNAME_new.csv" target="_blank">Get the raw data behind this visualisation</a> | <a href="https://www.statewatch.org/deportation-union-rights-accountability-and-the-eu-s-push-to-increase-forced-removals/" target="_blank">Link to full Deportation Union spreadsheet</a> </p>
 </div>
 <div class="caption">
   <p>Number of deported persons by year and deporting EU member state. Bars are arranged by the total number of deportations across years (bottom bar is Germany, Germany has recieved the largest amount of contributions in the time period, second bar is Austria, Austria has recieved the second largest amount of contributions in the time period, a.s.o.)</p>
@@ -41,7 +41,7 @@ var EUformat = d3.formatDefaultLocale({
 
 var menu = d3.select("#DEST")
 
-d3.csv("../clean_data/N_RETURNEES_YEARS_MSNAME.csv").then(d => chart(d))
+d3.csv("../clean_data/N_RETURNEES_YEARS_MSNAME_new.csv").then(d => chart(d))
 
 function chart(csv) {
 

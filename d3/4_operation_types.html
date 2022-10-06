@@ -13,7 +13,7 @@
 <svg id="chart"></svg>
 
 <div class="caption">
-  <p> <a href="../clean_data/OPTYPE_YEAR.csv" target="_blank">Get the raw data behind this visualisation</a> | <a href="https://www.statewatch.org/deportation-union-rights-accountability-and-the-eu-s-push-to-increase-forced-removals/" target="_blank">Link to full Deportation Union spreadsheet</a> </p>
+  <p> <a href="../clean_data/OPTYPE_YEAR_new.csv" target="_blank">Get the raw data behind this visualisation</a> | <a href="https://www.statewatch.org/deportation-union-rights-accountability-and-the-eu-s-push-to-increase-forced-removals/" target="_blank">Link to full Deportation Union spreadsheet</a> </p>
 </div>
 
 <script>
@@ -35,7 +35,7 @@ var EUformat = d3.formatDefaultLocale({
 
 var menu = d3.select("#KEY")
 
-d3.csv("../clean_data/OPTYPE_YEAR.csv").then(d => chart(d))
+d3.csv("../clean_data/OPTYPE_YEAR_new.csv").then(d => chart(d))
 
 function chart(csv) {
 

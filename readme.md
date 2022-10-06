@@ -1,4 +1,21 @@
+readme outdated - changes in scripts on oct 10th not reflected
+
+
 ## Unresolved issues
+
+as of Aug 20th 2022:
+
+- RO ID's RO-2016-112 and -113 same MS, DEST and Date (2016-08-31) but different numbers. add together?
+- RO-01516: date was 2020-10-13 in the files obtained in 12/21, date is 2020-10-14 in some files obtained 08/22 and still 2020-10-13 in other files from 08/22. set to 2020-10-13 everywhere.
+- VRDS only included in data obtained in 08/22 (for years 2020 and 2021). not clear if VRD data is available for previous years upon request. excluded for now from datasets
+- data is aggregated by ROID, when an operation includes multiple destinations, no data is provided per destination. Confirmatory application about this has been registered on Aug 20th (same procedure as 2021). **-> operations with multiple destinations are missing for 2021 in OPERATIONS_BY_DEST_MS.csv for now**
+- "costs for AUT not available yet" in 2021 operations; no action taken so far, maybe exclude those operations?
+- observers are supplied only per operation in data obtained 08/22, not disaggregated by member state **-> no observers in OPERATIONS_BY_MS.csv** for 2020 / 2021
+- "escorts from pool" no longer present in data obtained 08/22
+- "medical staff" not supplied from 2019 onwards
+- in the graph about frontex contributions, we need to add info about which years data this is based on
+- i just realized that something seems off with the calculations, as there are 7408 people returned in 2020 in total "by destinations" but 13021 "by operation type".
+- also the descriptions/fine print from the second and third graphic seem to have gotten confused, will fix it as soon as possible.
 
 as of Dec 5th 2021
 
@@ -9,17 +26,6 @@ as of Dec 5th 2021
 - 2015 row 4: returnees (3) has number, but total, (1) and (2) not, only destinations (1) and (2)
 
 August 19th: all above issues solved (see `deportations 2015, 2016, 2017 data - corrected.xlsx`)
-
-as of Aug 20th 2022:
-
-- RO-01516: date was 2020-10-13 in the files obtained in 12/21, date is 2020-10-14 in some files obtained 08/22 and still 2020-10-13 in other files from 08/22. set to 2020-10-13 everywhere.
-- VRDS only included in data obtained in 08/22 (for years 2020 and 2021). not clear if VRD data is available for previous years upon request. excluded for now from datasets
-- data is aggregated by ROID, when an operation includes multiple destinations, no data is provided per destination. Confirmatory application about this has been registered on Aug 20th (same procedure as 2021). **-> operations with multiple destinations are missing for 2021 in OPERATIONS_BY_DEST_MS.csv for now**
-- "costs for AUT not available yet" in 2021 operations; no action taken so far, maybe exclude those operations?
-- observers are supplied only per operation in data obtained 08/22, not disaggregated by member state **-> no oberservers in OPERATIONS_BY_MS.csv** foe 2020 / 2021
-- "escorts from pool" no longer present in data obtained 08/22
-- "medical staff" not supplied from 2019 onwards
-- in the graph about frontex contributions, we need to add info about which years data this is based on
 
 ## How to update
 
