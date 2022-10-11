@@ -20,7 +20,7 @@ Albania,Denmark,1
 Albania,Estonia,0.5
 Albania,Finland,86
 Albania,France,5982.5
-Albania,Germany,9135.5
+Albania,Germany,9209.5
 Albania,Greece,9
 Albania,Hungary,23
 Albania,Iceland,323.5
@@ -277,7 +277,7 @@ Macedonia,Austria,38
 Macedonia,Belgium,9
 Macedonia,Finland,5
 Macedonia,France,2.5
-Macedonia,Germany,2367.5
+Macedonia,Germany,2522.5
 Macedonia,Hungary,0.5
 Macedonia,Iceland,240
 Macedonia,Luxembourg,8.5
@@ -286,7 +286,7 @@ Macedonia,Sweden,64
 Mali,Germany,2
 Mauritania,Spain,343
 Moldova,France,5
-Moldova,Germany,2141
+Moldova,Germany,2155
 Moldova,Sweden,3
 Moldova,Switzerland,5
 Mongolia,Austria,12
@@ -340,7 +340,7 @@ Pakistan,Bulgaria,80
 Pakistan,Finland,14
 Pakistan,France,51
 Pakistan,Germany,1390
-Pakistan,Greece,702
+Pakistan,Greece,724
 Pakistan,Hungary,78
 Pakistan,Ireland,55
 Pakistan,Italy,25
@@ -377,7 +377,7 @@ Serbia,Bulgaria,0.5
 Serbia,Denmark,1
 Serbia,Finland,10.5
 Serbia,France,21.5
-Serbia,Germany,6845
+Serbia,Germany,6952
 Serbia,Greece,11
 Serbia,Iceland,21.5
 Serbia,Ireland,5
@@ -409,8 +409,8 @@ Togo,Netherlands,7
 Togo,Poland,0.5
 Togo,Spain,1
 Togo,Switzerland,6.5
-Tunisia,Germany,1074
-Tunisia,Italy,8348
+Tunisia,Germany,1096
+Tunisia,Italy,8398
 Turkey,Austria,27
 Turkey,Finland,5
 Turkey,Germany,21
