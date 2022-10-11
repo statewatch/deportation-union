@@ -59,7 +59,8 @@ staff <- read_csv("../raw_data/frontex_docs_converted/tabula-2019_Staff.csv")%>%
   mutate(N_ESC_OBS_MED = rowSums(.[grep("N_OBS$|N_ESC|N_MEDS", names(.))], na.rm = T))
 
 dests <- read_csv("../raw_data/frontex_docs_converted/tabula-2019_TCNs, date, type.csv")%>%
-  bind_rows(read_csv("../raw_data/frontex_docs_converted/tabula-2020_TCNs, date, type.csv"))%>%
+  bind_rows(read_csv("../raw_data/frontex_docs_converted/tabula-2020_TCNs, date, type.csv",
+                     col_types = "ccccccd"))%>%
   bind_rows(read_csv("../raw_data/frontex_docs_converted/tabula-2021_TCNs, date, type.csv"))%>%
   select(-3, -6)%>%
   rename(ROID = "RO-ID",
