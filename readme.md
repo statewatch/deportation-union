@@ -78,6 +78,13 @@ Note: When the same operation ID is used for multiple dates, they are counted as
 
 `N_RETURNEES_YEARS_MSNAME_new.csv` with YEAR, DEST and one column for each MSNAME
 
+`N_RETURNEES_MSNAME_DEST_ROUTES_MIN_15_new.csv` with DEST, MSNAME and N_RETURNEES for the 15 MS and DEST with most RETURNEES
+
+`FX_CONTRIB_YEARS_MSNAME_new.csv` with YEAR, MSNAME and one column for each MSNAME
+
+`CONTRIB_PP_BY_DEST_new.csv` with DEST, N_RETURNEES, FX_CONTRIB, FX_CONTRIB_PP, iso
+Note: Only operations with exactly one member state and one destination were considered (all of which are from 2016 and later). The average is also based only on these operations.
+
 
 # readme from here outdated - changes in scripts on oct 10th not reflected
 

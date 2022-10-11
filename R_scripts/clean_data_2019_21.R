@@ -97,10 +97,11 @@ by_op_2019_21 <- fx_staff
 write_csv(by_op_2019_21, "../clean_data/by_op_2019_21.csv")
 
 by_ms_2019_21 <- full_join(
-  costs,
+  costs %>%
+    left_join(country_codes %>% rename(MSNAME = NAME), by = c("MSISO" = "ISO")),
   staff %>%
     left_join(country_codes, by = c("MSNAME" = "NAME")),
-  by = c("MSISO" = "ISO", "ROID", "DATE")
+  by = c("MSISO" = "ISO", "MSNAME", "ROID", "DATE")
 )
 write_csv(by_ms_2019_21, "../clean_data/by_ms_2019_21.csv")
 
