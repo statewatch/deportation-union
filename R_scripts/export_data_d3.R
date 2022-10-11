@@ -48,19 +48,17 @@ write_csv(OPTYPE_YEAR, "../clean_data/OPTYPE_YEAR_new.csv")
 # -------------------------------------
 
 OPERATIONS_BY_DEST_MS <- by_dest_2006_18%>%
-  select(-N_ESC, -N_ESC_LEAD)%>%
+  select(ROWID, N_RETURNEES, DEST)%>%
   left_join(by_ms_2006_18%>%
               select(ROWID, MSNAME, DATE))%>%
   select(-ROWID)%>%
-  bind_rows(dests_2019_20%>%
-              left_join(lookup_date_id_type)%>%
-              select(-ROID, -MSISO, -OPTYPE))%>%
-  bind_rows(returnees_2020_2021_split%>%
-              filter(substr(DATE, 1, 4) != "2020")%>%
-              select(-ROID, -MSTYPE, -OPTYPE))
+  mutate(DATE = as_date(DATE))%>%
+  bind_rows(by_dest_2019_21 %>%
+              select(N_RETURNEES, DEST, MSNAME, DATE)%>%
+              mutate(DATE = as_date(DATE, format = "%d/%m/%Y")))
 
 temp_order <- OPERATIONS_BY_DEST_MS %>%
-  mutate(YEAR = as.numeric(substr(DATE, 1, 4)))%>%
+  mutate(YEAR = year(DATE))%>%
   group_by(MSNAME, YEAR)%>%
   summarize(N_RETURNEES = sum(N_RETURNEES, na.rm = TRUE))%>%
   group_by(MSNAME)%>%
@@ -69,11 +67,11 @@ temp_order <- OPERATIONS_BY_DEST_MS %>%
   arrange(desc(total_over_years))
 
 N_RETURNEES_YEARS_MSNAME <- OPERATIONS_BY_DEST_MS %>%
-  mutate(YEAR = as.numeric(substr(DATE, 1, 4)))%>%
+  mutate(YEAR = year(DATE))%>%
   group_by(MSNAME, YEAR)%>%
   summarize(DEST = "all destinations", N_RETURNEES = sum(N_RETURNEES, na.rm = TRUE)) %>%
   bind_rows(OPERATIONS_BY_DEST_MS %>%
-              mutate(YEAR = as.numeric(substr(DATE, 1, 4)))%>%
+              mutate(YEAR = year(DATE))%>%
               group_by(MSNAME, DEST, YEAR)%>%
               summarize(N_RETURNEES = sum(N_RETURNEES, na.rm = TRUE)))%>%
   # create each YEAR for each combo

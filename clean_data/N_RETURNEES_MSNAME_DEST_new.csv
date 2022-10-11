@@ -13,14 +13,14 @@ Afghanistan,Romania,36
 Afghanistan,Slovakia,1
 Afghanistan,Slovenia,2
 Afghanistan,Sweden,444
-Albania,Austria,198
-Albania,Belgium,749.5
+Albania,Austria,196.5
+Albania,Belgium,749
 Albania,Bulgaria,1.5
 Albania,Denmark,1
 Albania,Estonia,0.5
 Albania,Finland,86
-Albania,France,5981
-Albania,Germany,9046.5
+Albania,France,5982.5
+Albania,Germany,9135.5
 Albania,Greece,9
 Albania,Hungary,23
 Albania,Iceland,323.5
@@ -28,24 +28,24 @@ Albania,Ireland,34
 Albania,Italy,63
 Albania,Lithuania,3
 Albania,Luxembourg,64.5
-Albania,Netherlands,199.5
+Albania,Netherlands,190.5
 Albania,Norway,2.5
 Albania,Poland,4.5
 Albania,Portugal,1
 Albania,Slovakia,1
-Albania,Spain,536.5
-Albania,Sweden,451
+Albania,Spain,559
+Albania,Sweden,453.5
+Albania,The Netherlands,9
 Albania,United Kingdom,147
 Angola,Switzerland,2
-Armenia,Austria,220
+Armenia,Austria,209.5
 Armenia,Belgium,21.5
 Armenia,Bulgaria,2.5
-Armenia,Czech Republic,1.5
 Armenia,Finland,4
 Armenia,France,24.5
 Armenia,Frontex,1
-Armenia,Germany,981
-Armenia,Greece,23
+Armenia,Germany,976.5
+Armenia,Greece,17
 Armenia,Hungary,9
 Armenia,Iceland,1.5
 Armenia,Ireland,3.5
@@ -55,8 +55,8 @@ Armenia,Netherlands,7
 Armenia,Poland,18.5
 Armenia,Romania,0.5
 Armenia,Spain,46.5
-Armenia,Sweden,69
-Armenia,Switzerland,13
+Armenia,Sweden,68
+Armenia,Switzerland,12.5
 Azerbaijan,Austria,8
 Azerbaijan,Belgium,4
 Azerbaijan,Germany,389
@@ -78,7 +78,7 @@ Benin,Switzerland,1.5
 Bosnia and Herzegovina,Belgium,6
 Bosnia and Herzegovina,Finland,2
 Bosnia and Herzegovina,France,5
-Bosnia and Herzegovina,Germany,609
+Bosnia and Herzegovina,Germany,609.5
 Bosnia and Herzegovina,Hungary,0.5
 Bosnia and Herzegovina,Luxembourg,25
 Bosnia and Herzegovina,Spain,2
@@ -98,21 +98,20 @@ Cameroon,Spain,16
 Cameroon,Sweden,3.5
 Cameroon,Switzerland,23.5
 Cameroon,United Kingdom,9.5
-Colombia,Bulgaria,2.5
+Colombia,Bulgaria,2
 Colombia,Finland,5
 Colombia,France,14.5
 Colombia,Germany,1.5
 Colombia,Greece,2.5
-Colombia,Hungary,1.5
+Colombia,Hungary,1
 Colombia,Italy,15.5
-Colombia,Luxembourg,0.5
 Colombia,Netherlands,3
-Colombia,Poland,2.5
-Colombia,Portugal,2
+Colombia,Poland,3
+Colombia,Portugal,1.5
 Colombia,Romania,0.5
-Colombia,Spain,1872
-Colombia,Sweden,2.5
-Colombia,Switzerland,7
+Colombia,Spain,1945.5
+Colombia,Sweden,5
+Colombia,Switzerland,7.5
 Congo DR,Belgium,169
 Congo DR,Czech Republic,1
 Congo DR,Finland,10.5
@@ -131,13 +130,13 @@ Congo DR,Sweden,8.5
 Congo DR,Switzerland,26.5
 Congo DR,United Kingdom,5.5
 Côte d'Ivoire,Germany,2
-Dominican Republic,Bulgaria,2.5
+Dominican Republic,Bulgaria,3
 Dominican Republic,France,2
 Dominican Republic,Greece,3.5
 Dominican Republic,Hungary,1
-Dominican Republic,Luxembourg,0.5
-Dominican Republic,Spain,427.5
-Dominican Republic,Switzerland,1
+Dominican Republic,Luxembourg,1
+Dominican Republic,Spain,382
+Dominican Republic,Switzerland,0.5
 Ecuador,Bulgaria,3
 Ecuador,France,12.5
 Ecuador,Germany,0.5
@@ -163,9 +162,9 @@ Ethiopia,Switzerland,4
 Gambia,Austria,40.5
 Gambia,Cyprus,1
 Gambia,Denmark,0.5
-Gambia,Finland,7.5
+Gambia,Finland,8.5
 Gambia,France,2.5
-Gambia,Germany,162.5
+Gambia,Germany,184.5
 Gambia,Greece,0.5
 Gambia,Hungary,1.5
 Gambia,Ireland,13
@@ -177,34 +176,35 @@ Gambia,Poland,1
 Gambia,Slovakia,0.5
 Gambia,Slovenia,1
 Gambia,Spain,7
-Gambia,Sweden,16
+Gambia,Sweden,17
 Gambia,Switzerland,12.5
 Gambia,United Kingdom,17.5
-Georgia,Austria,509.5
+Georgia,Austria,521
 Georgia,Belgium,27.5
 Georgia,Bulgaria,9.5
 Georgia,Cyprus,1
-Georgia,Czech Republic,2
+Georgia,Czech Republic,4
 Georgia,Denmark,4
 Georgia,Estonia,0.5
 Georgia,Finland,12.5
-Georgia,France,407.5
-Georgia,Germany,3846.5
-Georgia,Greece,238
+Georgia,France,395.5
+Georgia,Germany,3868.5
+Georgia,Greece,240
 Georgia,Hungary,16.5
 Georgia,Iceland,87
 Georgia,Ireland,39.5
 Georgia,Italy,108
 Georgia,Lithuania,19
-Georgia,Luxembourg,13
-Georgia,Netherlands,4
+Georgia,Luxembourg,14
+Georgia,Netherlands,3
 Georgia,Norway,8.5
 Georgia,Poland,162.5
 Georgia,Portugal,5.5
 Georgia,Romania,0.5
-Georgia,Spain,660
-Georgia,Sweden,163.5
-Georgia,Switzerland,83.5
+Georgia,Spain,637.5
+Georgia,Sweden,164.5
+Georgia,Switzerland,84
+Georgia,The Netherlands,1
 Georgia,United Kingdom,2
 Ghana,Austria,0.5
 Ghana,Belgium,8
@@ -223,12 +223,12 @@ Guinea,Austria,1
 Guinea,Belgium,47
 Guinea,France,16
 Guinea,Germany,120
-Guinea,Netherlands,2
 Guinea,Norway,1
 Guinea,Romania,2
 Guinea,Spain,24
 Guinea,Sweden,1
 Guinea,Switzerland,16
+Guinea,The Netherlands,2
 Guinea-Bissau,Switzerland,2
 Iraq,Bulgaria,1
 Iraq,Denmark,7
@@ -248,26 +248,27 @@ Ivory Coast,Poland,1.5
 Ivory Coast,Spain,5
 Ivory Coast,Switzerland,10.5
 Kenya,Germany,2
-Kosovo,Austria,1072
-Kosovo,Belgium,32.5
+Kosovo,Austria,1073.5
+Kosovo,Belgium,33
 Kosovo,Croatia,4
 Kosovo,Denmark,4
 Kosovo,Finland,148
-Kosovo,France,152.5
+Kosovo,France,151.5
 Kosovo,Frontex,1
-Kosovo,Germany,6299
+Kosovo,Germany,6132
 Kosovo,Hungary,766.5
 Kosovo,Iceland,13.5
 Kosovo,Italy,1
-Kosovo,Luxembourg,41.5
-Kosovo,Netherlands,4
+Kosovo,Luxembourg,40.5
+Kosovo,Netherlands,3
 Kosovo,Norway,77
 Kosovo,Poland,1.5
 Kosovo,Portugal,1
 Kosovo,Romania,4
 Kosovo,Slovakia,6
 Kosovo,Slovenia,4
-Kosovo,Sweden,294.5
+Kosovo,Sweden,294
+Kosovo,The Netherlands,1
 Kosovo,United Kingdom,20
 Kyrgyzstan,Switzerland,2
 Lebanon,Germany,11
@@ -284,10 +285,9 @@ Macedonia,Spain,3
 Macedonia,Sweden,64
 Mali,Germany,2
 Mauritania,Spain,343
-Moldova,France,4.5
-Moldova,Germany,2053.5
-Moldova,Spain,3.5
-Moldova,Sweden,5.5
+Moldova,France,5
+Moldova,Germany,2141
+Moldova,Sweden,3
 Moldova,Switzerland,5
 Mongolia,Austria,12
 Mongolia,Czech Republic,1
@@ -317,7 +317,7 @@ Nigeria,Latvia,1
 Nigeria,Lithuania,5
 Nigeria,Luxembourg,55
 Nigeria,Malta,100
-Nigeria,Netherlands,239
+Nigeria,Netherlands,231
 Nigeria,Norway,482
 Nigeria,Poland,45
 Nigeria,Portugal,23
@@ -327,20 +327,20 @@ Nigeria,Slovenia,7
 Nigeria,Spain,529
 Nigeria,Sweden,142.5
 Nigeria,Switzerland,235.5
+Nigeria,The Netherlands,8
 Nigeria,United Kingdom,434.5
 North Macedonia,Austria,19
-North Macedonia,Germany,844.5
+North Macedonia,Germany,790
 North Macedonia,Iceland,7
 North Macedonia,Luxembourg,6
 North Macedonia,Sweden,1
-Pakistan,Austria,221
+Pakistan,Austria,220
 Pakistan,Belgium,30
 Pakistan,Bulgaria,80
-Pakistan,Czech Republic,0.5
 Pakistan,Finland,14
 Pakistan,France,51
 Pakistan,Germany,1390
-Pakistan,Greece,698
+Pakistan,Greece,702
 Pakistan,Hungary,78
 Pakistan,Ireland,55
 Pakistan,Italy,25
@@ -357,11 +357,9 @@ Pakistan,Spain,191
 Pakistan,Sweden,53
 Pakistan,Switzerland,24.5
 Pakistan,United Kingdom,43
-Peru,Hungary,0.5
-Peru,Poland,0.5
-Peru,Portugal,0.5
-Peru,Spain,104
-Peru,Sweden,2.5
+Peru,Hungary,1
+Peru,Portugal,1
+Peru,Spain,76
 Russia,Austria,218
 Russia,Belgium,5
 Russia,Bulgaria,2
@@ -378,8 +376,8 @@ Serbia,Belgium,42
 Serbia,Bulgaria,0.5
 Serbia,Denmark,1
 Serbia,Finland,10.5
-Serbia,France,22.5
-Serbia,Germany,6809.5
+Serbia,France,21.5
+Serbia,Germany,6845
 Serbia,Greece,11
 Serbia,Iceland,21.5
 Serbia,Ireland,5
@@ -404,9 +402,6 @@ Sudan,Italy,40
 Sudan,Norway,3
 Sudan,Poland,0.5
 Sudan,Switzerland,17.5
-The Gambia,Finland,1
-The Gambia,Germany,22
-The Gambia,Sweden,1
 Togo,France,3
 Togo,Germany,19.5
 Togo,Luxembourg,0.5
@@ -415,24 +410,24 @@ Togo,Poland,0.5
 Togo,Spain,1
 Togo,Switzerland,6.5
 Tunisia,Germany,1074
-Tunisia,Italy,8450
+Tunisia,Italy,8348
 Turkey,Austria,27
 Turkey,Finland,5
 Turkey,Germany,21
 Ukraine,Austria,29.5
 Ukraine,France,22
-Ukraine,Germany,517
+Ukraine,Germany,508.5
 Ukraine,Greece,2
 Ukraine,Hungary,1
 Ukraine,Ireland,14
 Ukraine,Italy,21
-Ukraine,Netherlands,1
 Ukraine,Norway,8
 Ukraine,Poland,5
 Ukraine,Portugal,3.5
-Ukraine,Spain,159
-Ukraine,Sweden,5.5
+Ukraine,Spain,162.5
+Ukraine,Sweden,6
 Ukraine,Switzerland,13
+Ukraine,The Netherlands,1
 Uzbekistan,Austria,14
 Uzbekistan,Finland,1
 Uzbekistan,Sweden,5
@@ -440,8 +435,8 @@ Vietnam,Czech Republic,13
 Vietnam,Germany,83
 Vietnam,Hungary,2
 Vietnam,Lithuania,1
-Vietnam,Netherlands,2
 Vietnam,Norway,4
 Vietnam,Poland,56
 Vietnam,Romania,25
 Vietnam,Sweden,5
+Vietnam,The Netherlands,2

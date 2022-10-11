@@ -76,6 +76,9 @@
 `OPTYPE_YEAR_new.csv` with YEAR,KEY,CRO,JRO,NRO
 Note: When the same operation ID is used for multiple dates, they are counted as different operations. Only operations taking place the same day and sharing an ID are counted as the same operation.
 
+`N_RETURNEES_YEARS_MSNAME_new.csv` with YEAR, DEST and one column for each MSNAME
+
+
 # readme from here outdated - changes in scripts on oct 10th not reflected
 
 ## Unresolved issues

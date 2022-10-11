@@ -15,6 +15,9 @@
 <div class="caption">
   <p> <a href="../clean_data/OPTYPE_YEAR_new.csv" target="_blank">Get the raw data behind this visualisation</a> | <a href="https://www.statewatch.org/deportation-union-rights-accountability-and-the-eu-s-push-to-increase-forced-removals/" target="_blank">Link to full Deportation Union spreadsheet</a> </p>
 </div>
+<div class="caption">
+  <p>Note: When the same operation ID is used for multiple dates, they are counted as different operations. Only operations taking place the same day and sharing an ID are counted as the same operation.</p>
+</div>
 
 <script>
 
@@ -161,7 +164,7 @@ svg.attr("width", width + margin.left) // margin.right should stay empty
               "in " + + d.data.YEAR +
               "</div>"+
             "<div class = 'tooltip-content'>" +
-            subgroupName + "s:"+"<br>"+
+            subgroupName + ":"+"<br>"+
             "<strong>" + delta + "</strong>" +
             "</div>"
           );
