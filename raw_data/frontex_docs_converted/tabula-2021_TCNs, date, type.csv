@@ -1,0 +1,882 @@
+RO-ID,Date of Departure type of operation,,MSSAC,Destination(s),Number of TCNs,
+RO-01604,06/01/2021 CRO,,France,Albania,,20
+RO-01604 Total,,,,,,20
+RO-01605,13/01/2021 NRO,,Germany,Tunisia,,12
+RO-01605 Total,,,,,,12
+RO-01606,15/01/2021 JRO,,Austria,Kosovo*,,1
+"",,,Austria,Albania,,2
+"",,,Germany,Kosovo*,,8
+"",,,Germany,Albania,,45
+RO-01606 Total,,,,,,56
+RO-01607,12/01/2021 CRO,,France,Albania,,17
+RO-01607 Total,,,,,,17
+RO-01609,12/01/2021 NRO,,Germany,Afghanistan,,26
+RO-01609 Total,,,,,,26
+RO-01610,21/01/2021 JRO,,France,Albania,,3
+"",,,France,Moldova,,2
+"",,,Germany,Albania,,25
+"",,,Germany,Moldova,,49
+RO-01610 Total,,,,,,79
+RO-01611,21/01/2021 NRO,,Germany,North Macedonia,,36
+"",,,Germany,Serbia,,25
+RO-01611 Total,,,,,,61
+RO-01612,19/01/2021 NRO,,Germany,Guinea,,25
+RO-01612 Total,,,,,,25
+RO-01614,19/01/2021 NRO,,Germany,Georgia,,41
+RO-01614 Total,,,,,,41
+RO-01615,19/01/2021 CRO,,France,Albania,,15
+RO-01615 Total,,,,,,15
+RO-01616,19/01/2021 JRO,,Austria,Nigeria,,13
+"",,,Germany,Nigeria,,24
+"",,,Hungary,Nigeria,,1
+RO-01616 Total,,,,,,38
+RO-01618,26/01/2021 NRO,,Germany,Ghana,,16
+RO-01618 Total,,,,,,16
+RO-01619,26/01/2021 CRO,,France,Albania,,9
+RO-01619 Total,,,,,,9
+RO-01625,27/01/2021 JRO,,Germany,Ethiopia,,3
+"",,,Switzerland,Ethiopia,,4
+RO-01625 Total,,,,,,7
+RO-01626,28/01/2021 JRO,,Austria,Armenia,,6
+"",,,Austria,Georgia,,8
+"",,,Germany,Georgia,,9
+"",,,Switzerland,Georgia,,1
+RO-01626 Total,,,,,,24
+RO-01627,18/01/2021 JRO,,Germany,Pakistan,,23
+"",,,Romania,Pakistan,,1
+RO-01627 Total,,,,,,24
+RO-01628,26/01/2021 NRO,,Greece,Pakistan,,25
+RO-01628 Total,,,,,,25
+RO-01632,07/01/2021 NRO,,Luxembourg,Kosovo*,,5
+"",,,Luxembourg,Albania,,7
+RO-01632 Total,,,,,,12
+RO-01635,29/01/2021 NRO,,Germany,Ukraine,,42
+RO-01635 Total,,,,,,42
+RO-01636,02/02/2021 CRO,,France,Albania,,18
+RO-01636 Total,,,,,,18
+RO-ID,Date of Departure type of operation,,MSSAC,Destination(s),Number of TCNs,
+RO-01637,02/02/2021 NRO,,Germany,Armenia,,25
+RO-01637 Total,,,,,,25
+RO-01639,02/02/2021 NRO,,Germany,Kosovo*,,24
+"",,,Germany,Albania,,24
+RO-01639 Total,,,,,,48
+RO-01640,09/02/2021 CRO,,France,Albania,,10
+RO-01640 Total,,,,,,10
+RO-01641,11/02/2021 NRO,,Germany,Kosovo*,,17
+"",,,Germany,Albania,,20
+RO-01641 Total,,,,,,37
+RO-01642,09/02/2021 JRO,,Belgium,Guinea,,1
+"",,,Germany,Guinea,,14
+RO-01642 Total,,,,,,15
+RO-01643,11/02/2021 CRO,,Germany,Georgia,,45
+"",,,Italy,Georgia,,4
+RO-01643 Total,,,,,,49
+RO-01644,09/02/2021 NRO,,Germany,Afghanistan,,26
+RO-01644 Total,,,,,,26
+RO-01645,16/02/2021 CRO,,France,Albania,,16
+RO-01645 Total,,,,,,16
+RO-01647,23/02/2021 CRO,,France,Albania,,40
+RO-01647 Total,,,,,,40
+RO-01648,23/02/2021 JRO,,Austria,Afghanistan,,17
+"",,,Belgium,Afghanistan,,2
+"",,,Bulgaria,Afghanistan,,2
+"",,,Hungary,Afghanistan,,2
+"",,,Luxembourg,Afghanistan,,1
+"",,,Slovakia,Afghanistan,,1
+"",,,Sweden,Afghanistan,,12
+RO-01648 Total,,,,,,37
+RO-01650,25/02/2021 NRO,,Germany,North Macedonia,,27
+"",,,Germany,Serbia,,41
+RO-01650 Total,,,,,,68
+RO-01653,10/02/2021 JRO,,Austria,Pakistan,,6
+"",,,Greece,Pakistan,,15
+"",,,Slovenia,Pakistan,,1
+RO-01653 Total,,,,,,22
+RO-01654,17/02/2021 NRO,,Germany,Pakistan,,16
+RO-01654 Total,,,,,,16
+RO-01656,04/01/2021 NRO,,Italy,Tunisia,,36
+RO-01656 Total,,,,,,36
+RO-01657,22/01/2021 NRO,,Germany,Kosovo*,,9
+"",,,Germany,Albania,,11
+RO-01657 Total,,,,,,20
+RO-01658,07/01/2021 NRO,,Italy,Tunisia,,40
+RO-01658 Total,,,,,,40
+RO-01659,27/01/2021 NRO,,Germany,Iraq,,9
+RO-01659 Total,,,,,,9
+RO-01660,15/01/2021 NRO,,Italy,Tunisia,,37
+RO-01660 Total,,,,,,37
+RO-01663,29/01/2021 NRO,,France,Georgia,,21
+RO-01663 Total,,,,,,21
+RO-01665,23/02/2021 NRO,,Germany,Ghana,,22
+RO-01665 Total,,,,,,22
+RO-01667,25/02/2021 NRO,,Germany,Moldova,,30
+RO-ID,Date of Departure type of operation,,MSSAC,Destination(s),Number of TCNs,
+"",,,Germany,Ukraine,,9
+RO-01667 Total,,,,,,39
+RO-01668,23/02/2021 NRO,,Germany,Armenia,,32
+RO-01668 Total,,,,,,32
+RO-01669,04/02/2021 NRO,,Germany,Kosovo*,,4
+"",,,Germany,Moldova,,24
+RO-01669 Total,,,,,,28
+RO-01671,21/01/2021 NRO,,Italy,Tunisia,,17
+RO-01671 Total,,,,,,17
+RO-01673,08/04/2021 JRO,,Austria,Russia,,11
+"",,,Belgium,Russia,,4
+RO-01673 Total,,,,,,15
+RO-01674,03/03/2021 NRO,,Germany,Tunisia,,21
+RO-01674 Total,,,,,,21
+RO-01675,03/03/2021 JRO,,Finland,The Gambia,,1
+"",,,Germany,The Gambia,,22
+"",,,Sweden,The Gambia,,1
+RO-01675 Total,,,,,,24
+RO-01676,11/03/2021 CRO,,Germany,Georgia,,47
+"",,,Iceland,Georgia,,6
+RO-01676 Total,,,,,,53
+RO-01677,12/03/2021 NRO,,Germany,North Macedonia,,22
+"",,,Germany,Bosnia & Herzegovina,,19
+RO-01677 Total,,,,,,41
+RO-01678,11/03/2021 JRO,,Austria,Armenia,,1
+"",,,Austria,Georgia,,7
+"",,,Czech Republic,Georgia,,2
+"",,,Greece,Georgia,,6
+"",,,Sweden,Georgia,,2
+RO-01678 Total,,,,,,18
+RO-01679,09/03/2021 NRO,,Germany,Afghanistan,,26
+RO-01679 Total,,,,,,26
+RO-01681,19/03/2021 JRO,,Germany,Kosovo*,,20
+"",,,Germany,Albania,,23
+"",,,Sweden,Kosovo*,,1
+"",,,Sweden,Albania,,5
+RO-01681 Total,,,,,,49
+RO-01682,16/03/2021 JRO,,Belgium,Guinea,,1
+"",,,Germany,Guinea,,22
+"",,,Sweden,Guinea,,1
+RO-01682 Total,,,,,,24
+RO-01683,16/03/2021 JRO,,Germany,Pakistan,,27
+"",,,Poland,Pakistan,,2
+RO-01683 Total,,,,,,29
+RO-01684,25/03/2021 CRO,,Germany,Georgia,,41
+"",,,Italy,Georgia,,4
+RO-01684 Total,,,,,,45
+RO-01685,23/03/2021 JRO,,Poland,Colombia,,1
+"",,,Portugal,Peru,,1
+"",,,Spain,Colombia,,59
+"",,,Spain,Peru,,35
+"",,,Sweden,Colombia,,5
+RO-01685 Total,,,,,,101
+RO-01686,23/03/2021 JRO,,Germany,Ethiopia,,17
+"",,,Sweden,Ethiopia,,2
+RO-ID,Date of Departure type of operation,,MSSAC,Destination(s),Number of TCNs,
+RO-01686 Total,,,,,,19
+RO-01687,23/03/2021 NRO,,Germany,Ghana,,15
+RO-01687 Total,,,,,,15
+RO-01689,30/03/2021 JRO,,Germany,Sri Lanka,,20
+"",,,Switzerland,Sri Lanka,,4
+RO-01689 Total,,,,,,24
+RO-01690,31/03/2021 NRO,,Germany,Armenia,,34
+RO-01690 Total,,,,,,34
+RO-01691,30/03/2021 JRO,,Austria,Afghanistan,,15
+"",,,Bulgaria,Afghanistan,,1
+"",,,Hungary,Afghanistan,,3
+"",,,Romania,Afghanistan,,2
+"",,,Sweden,Afghanistan,,8
+RO-01691 Total,,,,,,29
+RO-01698,28/01/2021 NRO,,Italy,Tunisia,,21
+RO-01698 Total,,,,,,21
+RO-01699,06/05/2021 NRO,,Austria,Turkey,,10
+RO-01699 Total,,,,,,10
+RO-01702,29/03/2021 JRO,,Germany,Ukraine,,31
+"",,,Norway,Ukraine,,2
+RO-01702 Total,,,,,,33
+RO-01703,31/03/2021 NRO,,Germany,Azerbaijan,,32
+RO-01703 Total,,,,,,32
+RO-01704,02/03/2021 NRO,,Greece,Georgia,,10
+"",,,Greece,Pakistan,,15
+RO-01704 Total,,,,,,25
+RO-01705,04/03/2021 NRO,,Germany,Serbia,,40
+RO-01705 Total,,,,,,40
+RO-01706,08/02/2021 NRO,,Italy,Tunisia,,21
+RO-01706 Total,,,,,,21
+RO-01707,25/02/2021 NRO,,Germany,Georgia,,48
+RO-01707 Total,,,,,,48
+RO-01708,16/06/2021 JRO,,Czech Republic,Vietnam,,5
+"",,,Hungary,Vietnam,,2
+"",,,Lithuania,Vietnam,,1
+"",,,Norway,Vietnam,,4
+"",,,Poland,Vietnam,,13
+"",,,Sweden,Vietnam,,5
+RO-01708 Total,,,,,,30
+RO-01709,08/04/2021 CRO,,France,Georgia,,3
+"",,,Germany,Georgia,,45
+"",,,Italy,Georgia,,4
+RO-01709 Total,,,,,,52
+RO-01710,07/04/2021 NRO,,Germany,Afghanistan,,20
+RO-01710 Total,,,,,,20
+RO-01711,14/04/2021 JRO,,France,Serbia,,1
+"",,,France,Moldova,,3
+"",,,Germany,Serbia,,29
+"",,,Germany,Moldova,,15
+RO-01711 Total,,,,,,48
+RO-01712,13/04/2021 NRO,,Germany,North Macedonia,,24
+"",,,Germany,Serbia,,20
+RO-01712 Total,,,,,,44
+RO-01713,14/04/2021 JRO,,Germany,Georgia,,20
+"",,,Spain,Georgia,,21
+RO-ID,Date of Departure type of operation,,MSSAC,Destination(s),Number of TCNs,
+"",,,Spain,Albania,,24
+RO-01713 Total,,,,,,65
+RO-01714,14/04/2021 JRO,,Austria,Pakistan,,4
+"",,,Greece,Pakistan,,20
+"",,,Sweden,Pakistan,,1
+"",,,Switzerland,Pakistan,,1
+RO-01714 Total,,,,,,26
+RO-01715,22/04/2021 JRO,,Belgium,Kosovo*,,1
+"",,,Germany,Kosovo*,,4
+"",,,Germany,Albania,,34
+RO-01715 Total,,,,,,39
+RO-01717,21/04/2021 NRO,,Germany,Tunisia,,21
+RO-01717 Total,,,,,,21
+RO-01719,29/04/2021 JRO,,France,Kosovo*,,1
+"",,,France,Albania,,3
+"",,,Germany,Kosovo*,,11
+"",,,Germany,Albania,,46
+RO-01719 Total,,,,,,61
+RO-01720,28/04/2021 NRO,,Germany,Azerbaijan,,52
+RO-01720 Total,,,,,,52
+RO-01721,29/04/2021 JRO,,Austria,Armenia,,1
+"",,,Austria,Georgia,,3
+"",,,Greece,Georgia,,2
+RO-01721 Total,,,,,,6
+RO-01723,11/02/2021 NRO,,Italy,Tunisia,,13
+RO-01723 Total,,,,,,13
+RO-01724,18/02/2021 NRO,,Italy,Tunisia,,35
+RO-01724 Total,,,,,,35
+RO-01725,15/02/2021 NRO,,Italy,Tunisia,,2
+RO-01725 Total,,,,,,2
+RO-01726,15/04/2021 NRO,,Germany,Armenia,,28
+RO-01726 Total,,,,,,28
+RO-01727,20/04/2021 NRO,,Germany,Pakistan,,30
+RO-01727 Total,,,,,,30
+RO-01729,22/02/2021 NRO,,Italy,Tunisia,,16
+RO-01729 Total,,,,,,16
+RO-01732,24/03/2021 NRO,,Germany,Albania,,19
+"",,,Germany,Moldova,,39
+RO-01732 Total,,,,,,58
+RO-01733,20/04/2021 CRO,,France,Albania,,18
+RO-01733 Total,,,,,,18
+RO-01734,06/04/2021 CRO,,France,Albania,,15
+"",,,Luxembourg,Albania,,1
+RO-01734 Total,,,,,,16
+RO-01735,13/04/2021 CRO,,Belgium,Albania,,1
+"",,,France,Albania,,15
+RO-01735 Total,,,,,,16
+RO-01736,01/03/2021 NRO,,Italy,Tunisia,,26
+RO-01736 Total,,,,,,26
+RO-01737,02/03/2021 NRO,,France,Albania,,10
+RO-01737 Total,,,,,,10
+RO-01739,04/03/2021 NRO,,Italy,Tunisia,,30
+RO-01739 Total,,,,,,30
+RO-01740,09/03/2021 NRO,,France,Albania,,18
+RO-01740 Total,,,,,,18
+RO-ID,Date of Departure type of operation,,MSSAC,Destination(s),Number of TCNs,
+RO-01741,27/04/2021 NRO,,France,Albania,,23
+RO-01741 Total,,,,,,23
+RO-01743,08/03/2021 NRO,,Italy,Tunisia,,11
+RO-01743 Total,,,,,,11
+RO-01744,16/03/2021 NRO,,France,Albania,,14
+RO-01744 Total,,,,,,14
+RO-01745,23/03/2021 NRO,,France,Albania,,13
+RO-01745 Total,,,,,,13
+RO-01746,11/03/2021 NRO,,Italy,Tunisia,,17
+RO-01746 Total,,,,,,17
+RO-01747,19/03/2021 NRO,,Italy,Egypt,,17
+RO-01747 Total,,,,,,17
+RO-01749,30/03/2021 NRO,,France,Albania,,16
+RO-01749 Total,,,,,,16
+RO-01750,06/05/2021 CRO,,Germany,Georgia,,36
+"",,,Italy,Georgia,,5
+RO-01750 Total,,,,,,41
+RO-01753,11/05/2021 JRO,,Germany,North Macedonia,,11
+"",,,Germany,Serbia,,19
+"",,,Sweden,North Macedonia,,1
+"",,,Sweden,Serbia,,1
+RO-01753 Total,,,,,,32
+RO-01755,20/05/2021 CRO,,Germany,Georgia,,56
+"",,,Italy,Georgia,,4
+RO-01755 Total,,,,,,60
+RO-01756,18/05/2021 NRO,,Germany,Pakistan,,35
+RO-01756 Total,,,,,,35
+RO-01757,17/05/2021 NRO,,Germany,Kosovo*,,19
+"",,,Germany,Albania,,47
+RO-01757 Total,,,,,,66
+RO-01758,19/05/2021 NRO,,Germany,Tunisia,,25
+RO-01758 Total,,,,,,25
+RO-01759,20/05/2021 JRO,,Belgium,Ghana,,1
+"",,,Germany,Ghana,,18
+RO-01759 Total,,,,,,19
+RO-01760,26/05/2021 JRO,,Austria,Nigeria,,16
+"",,,Germany,Nigeria,,25
+"",,,Hungary,Nigeria,,2
+RO-01760 Total,,,,,,43
+RO-01762,01/06/2021 NRO,,Germany,Azerbaijan,,28
+RO-01762 Total,,,,,,28
+RO-01763,01/06/2021 NRO,,Germany,Kosovo*,,14
+"",,,Germany,Moldova,,26
+RO-01763 Total,,,,,,40
+RO-01764,01/06/2021 NRO,,Germany,North Macedonia,,25
+"",,,Germany,Serbia,,40
+RO-01764 Total,,,,,,65
+RO-01765,18/03/2021 NRO,,Italy,Tunisia,,24
+RO-01765 Total,,,,,,24
+RO-01766,18/05/2021 NRO,,Germany,Armenia,,27
+RO-01766 Total,,,,,,27
+RO-01768,22/03/2021 NRO,,Italy,Tunisia,,24
+RO-01768 Total,,,,,,24
+RO-01769,11/05/2021 NRO,,Germany,Moldova,,27
+"",,,Germany,Bosnia & Herzegovina,,31
+RO-ID,Date of Departure type of operation,,MSSAC,Destination(s),Number of TCNs,
+RO-01769 Total,,,,,,58
+RO-01770,18/05/2021 JRO,,Austria,Afghanistan,,14
+"",,,Bulgaria,Afghanistan,,2
+"",,,Finland,Afghanistan,,2
+"",,,Romania,Afghanistan,,14
+"",,,Sweden,Afghanistan,,6
+RO-01770 Total,,,,,,38
+RO-01771,11/05/2021 NRO,,Greece,Pakistan,,10
+RO-01771 Total,,,,,,10
+RO-01772,25/03/2021 NRO,,Italy,Tunisia,,20
+RO-01772 Total,,,,,,20
+RO-01773,29/03/2021 NRO,,Italy,Tunisia,,21
+RO-01773 Total,,,,,,21
+RO-01774,01/04/2021 NRO,,Italy,Tunisia,,28
+RO-01774 Total,,,,,,28
+RO-01775,08/04/2021 NRO,,Italy,Tunisia,,17
+RO-01775 Total,,,,,,17
+RO-01776,13/04/2021 NRO,,Italy,Egypt,,15
+RO-01776 Total,,,,,,15
+RO-01778,04/05/2021 NRO,,France,Albania,,22
+RO-01778 Total,,,,,,22
+RO-01779,11/05/2021 CRO,,France,Albania,,20
+RO-01779 Total,,,,,,20
+RO-01780,18/05/2021 CRO,,France,Albania,,12
+RO-01780 Total,,,,,,12
+RO-01781,25/05/2021 CRO,,France,Albania,,26
+RO-01781 Total,,,,,,26
+RO-01782,15/04/2021 NRO,,Italy,Tunisia,,22
+RO-01782 Total,,,,,,22
+RO-01783,19/04/2021 NRO,,Italy,Tunisia,,27
+RO-01783 Total,,,,,,27
+RO-01784,22/04/2021 NRO,,Italy,Tunisia,,35
+RO-01784 Total,,,,,,35
+RO-01785,27/04/2021 NRO,,Italy,Egypt,,30
+RO-01785 Total,,,,,,30
+RO-01786,27/05/2021 JRO,,Germany,Moldova,,11
+"",,,Germany,Ukraine,,21
+"",,,Sweden,Ukraine,,1
+RO-01786 Total,,,,,,33
+RO-01787,02/06/2021 NRO,,Germany,Egypt,,19
+RO-01787 Total,,,,,,19
+RO-01788,10/06/2021 CRO,,Germany,Georgia,,51
+"",,,Italy,Georgia,,3
+RO-01788 Total,,,,,,54
+RO-01789,08/06/2021 NRO,,Germany,Afghanistan,,42
+RO-01789 Total,,,,,,42
+RO-01790,15/06/2021 NRO,,Germany,Armenia,,31
+RO-01790 Total,,,,,,31
+RO-01791,15/06/2021 JRO,,Austria,Afghanistan,,6
+"",,,Bulgaria,Afghanistan,,2
+"",,,Romania,Afghanistan,,20
+"",,,Sweden,Afghanistan,,3
+RO-01791 Total,,,,,,31
+RO-01793,16/06/2021 NRO,,Germany,Tunisia,,18
+RO-01793 Total,,,,,,18
+RO-ID,Date of Departure type of operation,,MSSAC,Destination(s),Number of TCNs,
+RO-01794,17/06/2021 NRO,,Germany,Ghana,,17
+RO-01794 Total,,,,,,17
+RO-01795,22/06/2021 NRO,,Germany,Pakistan,,47
+RO-01795 Total,,,,,,47
+RO-01796,24/06/2021 NRO,,Germany,Egypt,,20
+RO-01796 Total,,,,,,20
+RO-01797,25/06/2021 JRO,,Austria,Kosovo*,,3
+"",,,Germany,Kosovo*,,22
+"",,,Germany,Albania,,30
+RO-01797 Total,,,,,,55
+RO-01798,22/06/2021 JRO,,Austria,Nigeria,,4
+"",,,Germany,Nigeria,,29
+"",,,Hungary,Nigeria,,2
+"",,,Spain,Nigeria,,12
+RO-01798 Total,,,,,,47
+RO-01799,28/06/2021 NRO,,Germany,Guinea,,17
+RO-01799 Total,,,,,,17
+RO-01800,01/07/2021 CRO,,Germany,Georgia,,52
+"",,,Italy,Georgia,,4
+RO-01800 Total,,,,,,56
+RO-01801,16/06/2021 JRO,,Luxembourg,Dominican Rep,,1
+"",,,Spain,Colombia,,58
+"",,,Spain,Dominican Rep,,9
+"",,,Switzerland,Colombia,,1
+RO-01801 Total,,,,,,69
+RO-01802,26/04/2021 NRO,,Italy,Tunisia,,28
+RO-01802 Total,,,,,,28
+RO-01803,01/07/2021 NRO,,Germany,Azerbaijan,,37
+RO-01803 Total,,,,,,37
+RO-01805,09/06/2021 JRO,,Austria,Sri Lanka,,1
+"",,,Germany,Sri Lanka,,19
+"",,,Switzerland,Sri Lanka,,8
+RO-01805 Total,,,,,,28
+RO-01806,26/05/2021 JRO,,Germany,Georgia,,16
+"",,,Germany,Albania,,1
+"",,,Spain,Georgia,,9
+"",,,Spain,Albania,,22
+RO-01806 Total,,,,,,48
+RO-01807,03/05/2021 NRO,,Italy,Tunisia,,18
+RO-01807 Total,,,,,,18
+RO-01808,01/07/2021 NRO,,Germany,Serbia,,24
+"",,,Germany,Moldova,,41
+RO-01808 Total,,,,,,65
+RO-01809,01/06/2021 CRO,,France,Albania,,35
+RO-01809 Total,,,,,,35
+RO-01810,08/06/2021 CRO,,France,Albania,,30
+RO-01810 Total,,,,,,30
+RO-01812,15/06/2021 CRO,,France,Albania,,27
+RO-01812 Total,,,,,,27
+RO-01813,22/06/2021 CRO,,France,Albania,,36
+RO-01813 Total,,,,,,36
+RO-01814,29/06/2021 CRO,,France,Albania,,27
+RO-01814 Total,,,,,,27
+RO-01815,10/05/2021 NRO,,Italy,Tunisia,,12
+RO-01815 Total,,,,,,12
+RO-ID,Date of Departure type of operation,,MSSAC,Destination(s),Number of TCNs,
+RO-01816,15/06/2021 JRO,,Austria,Georgia,,4
+"",,,Austria,Pakistan,,2
+"",,,Czech Republic,Georgia,,1
+"",,,Greece,Georgia,,9
+"",,,Greece,Pakistan,,12
+RO-01816 Total,,,,,,28
+RO-01817,06/07/2021 CRO,,France,Albania,,32
+RO-01817 Total,,,,,,32
+RO-01818,07/07/2021 JRO,,Luxembourg,Georgia,,5
+"",,,Luxembourg,Albania,,3
+"",,,Spain,Georgia,,15
+"",,,Spain,Albania,,21
+RO-01818 Total,,,,,,44
+RO-01820,15/07/2021 NRO,,Germany,Kosovo*,,9
+"",,,Germany,Albania,,38
+RO-01820 Total,,,,,,47
+RO-01821,14/07/2021 NRO,,Germany,Tunisia,,22
+RO-01821 Total,,,,,,22
+RO-01822,15/07/2021 CRO,,Germany,Georgia,,42
+RO-01822 Total,,,,,,42
+RO-01823,13/07/2021 NRO,,Germany,Ghana,,14
+RO-01823 Total,,,,,,14
+RO-01825,20/07/2021 CRO,,France,Albania,,33
+RO-01825 Total,,,,,,33
+RO-01827,20/07/2021 NRO,,Germany,Armenia,,42
+RO-01827 Total,,,,,,42
+RO-01829,22/07/2021 NRO,,Germany,Kosovo*,,4
+"",,,Germany,Albania,,44
+RO-01829 Total,,,,,,48
+RO-01830,27/07/2021 JRO,,Austria,Nigeria,,9
+"",,,Germany,Nigeria,,26
+RO-01830 Total,,,,,,35
+RO-01832,28/07/2021 NRO,,Germany,Pakistan,,25
+RO-01832 Total,,,,,,25
+RO-01834,30/07/2021 NRO,,Germany,North Macedonia,,22
+"",,,Germany,Serbia,,52
+RO-01834 Total,,,,,,74
+RO-01835,29/07/2021 CRO,,Germany,Georgia,,36
+RO-01835 Total,,,,,,36
+RO-01837,21/05/2021 NRO,,Italy,Egypt,,16
+RO-01837 Total,,,,,,16
+RO-01838,02/06/2021 JRO,,Belgium,Congo DR,,5
+"",,,Switzerland,Congo DR,,2
+RO-01838 Total,,,,,,7
+RO-01839,17/05/2021 NRO,,Italy,Tunisia,,19
+RO-01839 Total,,,,,,19
+RO-01840,24/05/2021 NRO,,Italy,Tunisia,,15
+RO-01840 Total,,,,,,15
+RO-01841,06/07/2021 NRO,,Germany,Afghanistan,,27
+RO-01841 Total,,,,,,27
+RO-01842,15/07/2021 JRO,,Austria,Russia,,16
+"",,,Germany,Russia,,3
+RO-01842 Total,,,,,,19
+RO-01843,27/05/2021 NRO,,Italy,Tunisia,,39
+RO-01843 Total,,,,,,39
+RO-ID,Date of Departure type of operation,,MSSAC,Destination(s),Number of TCNs,
+RO-01844,20/07/2021 NRO,,Greece,Georgia,,5
+RO-01844 Total,,,,,,5
+RO-01845,27/07/2021 NRO,,Germany,Armenia,,13
+RO-01845 Total,,,,,,13
+RO-01847,04/06/2021 NRO,,Italy,Egypt,,21
+RO-01847 Total,,,,,,21
+RO-01848,01/07/2021 NRO,,France,Kosovo*,,12
+RO-01848 Total,,,,,,12
+RO-01849,07/06/2021 NRO,,Italy,Tunisia,,21
+RO-01849 Total,,,,,,21
+RO-01851,14/06/2021 NRO,,Italy,Tunisia,,15
+RO-01851 Total,,,,,,15
+RO-01853,13/08/2021 NRO,,Germany,Kosovo*,,17
+"",,,Germany,Albania,,14
+RO-01853 Total,,,,,,31
+RO-01854,10/08/2021 NRO,,Germany,Kosovo*,,3
+"",,,Germany,Moldova,,19
+RO-01854 Total,,,,,,22
+RO-01857,11/08/2021 NRO,,Germany,Tunisia,,8
+RO-01857 Total,,,,,,8
+RO-01858,12/08/2021 CRO,,Germany,Georgia,,48
+"",,,Italy,Georgia,,2
+RO-01858 Total,,,,,,50
+RO-01860,23/08/2021 NRO,,Germany,Pakistan,,40
+RO-01860 Total,,,,,,40
+RO-01861,27/08/2021 NRO,,Germany,North Macedonia,,9
+"",,,Germany,Serbia,,44
+RO-01861 Total,,,,,,53
+RO-01862,24/08/2021 JRO,,Austria,Nigeria,,5
+"",,,Germany,Nigeria,,27
+RO-01862 Total,,,,,,32
+RO-01866,17/06/2021 NRO,,Italy,Tunisia,,17
+RO-01866 Total,,,,,,17
+RO-01867,21/06/2021 NRO,,Italy,Egypt,,38
+RO-01867 Total,,,,,,38
+RO-01868,03/08/2021 CRO,,France,Albania,,35
+RO-01868 Total,,,,,,35
+RO-01869,17/08/2021 CRO,,France,Albania,,35
+RO-01869 Total,,,,,,35
+RO-01870,31/08/2021 CRO,,Belgium,Albania,,2
+"",,,France,Albania,,36
+RO-01870 Total,,,,,,38
+RO-01871,19/08/2021 NRO,,Austria,Turkey,,10
+RO-01871 Total,,,,,,10
+RO-01872,24/06/2021 NRO,,Italy,Tunisia,,7
+RO-01872 Total,,,,,,7
+RO-01873,23/07/2021 NRO,,Germany,Ukraine,,39
+RO-01873 Total,,,,,,39
+RO-01874,28/06/2021 NRO,,Italy,Tunisia,,11
+RO-01874 Total,,,,,,11
+RO-01875,04/08/2021 NRO,,Germany,Albania,,44
+RO-01875 Total,,,,,,44
+RO-01876,02/07/2021 NRO,,Italy,Egypt,,20
+RO-01876 Total,,,,,,20
+RO-01877,01/07/2021 NRO,,Italy,Tunisia,,16
+RO-ID,Date of Departure type of operation,,MSSAC,Destination(s),Number of TCNs,
+RO-01877 Total,,,,,,16
+RO-01879,01/09/2021 JRO,,Austria,Pakistan,,4
+"",,,Greece,Pakistan,,10
+RO-01879 Total,,,,,,14
+RO-01882,13/07/2021 NRO,,Italy,Egypt,,22
+RO-01882 Total,,,,,,22
+RO-01884,02/09/2021 NRO,,Germany,Ghana,,21
+RO-01884 Total,,,,,,21
+RO-01885,12/07/2021 NRO,,Italy,Tunisia,,14
+RO-01885 Total,,,,,,14
+RO-01887,09/09/2021 JRO,,Austria,Armenia,,1
+"",,,Austria,Georgia,,3
+"",,,Czech Republic,Georgia,,1
+"",,,Greece,Georgia,,4
+RO-01887 Total,,,,,,9
+RO-01888,09/09/2021 CRO,,Germany,Georgia,,35
+RO-01888 Total,,,,,,35
+RO-01892,17/09/2021 NRO,,Germany,Armenia,,27
+RO-01892 Total,,,,,,27
+RO-01893,15/09/2021 NRO,,Germany,Tunisia,,20
+RO-01893 Total,,,,,,20
+RO-01894,14/09/2021 NRO,,Germany,Azerbaijan,,26
+RO-01894 Total,,,,,,26
+RO-01896,22/09/2021 JRO,,Hungary,Peru,,1
+"",,,Spain,Colombia,,53
+"",,,Spain,Peru,,21
+RO-01896 Total,,,,,,75
+RO-01897,21/09/2021 JRO,,Austria,Nigeria,,13
+"",,,Bulgaria,Nigeria,,2
+"",,,Czech Republic,Nigeria,,1
+"",,,Germany,Nigeria,,29
+"",,,Lithuania,Nigeria,,1
+"",,,Poland,Nigeria,,1
+RO-01897 Total,,,,,,47
+RO-01898,23/09/2021 CRO,,Germany,Georgia,,27
+RO-01898 Total,,,,,,27
+RO-01899,21/09/2021 JRO,,Bulgaria,Pakistan,,1
+"",,,Germany,Pakistan,,44
+RO-01899 Total,,,,,,45
+RO-01900,29/09/2021 NRO,,Germany,Tunisia,,23
+RO-01900 Total,,,,,,23
+RO-01901,29/09/2021 NRO,,Germany,Ghana,,17
+RO-01901 Total,,,,,,17
+RO-01902,27/07/2021 NRO,,Italy,Egypt,,15
+RO-01902 Total,,,,,,15
+RO-01903,22/07/2021 NRO,,Italy,Tunisia,,17
+RO-01903 Total,,,,,,17
+RO-01904,29/07/2021 NRO,,Italy,Tunisia,,15
+RO-01904 Total,,,,,,15
+RO-01905,05/08/2021 NRO,,Italy,Tunisia,,13
+RO-01905 Total,,,,,,13
+RO-01906,28/09/2021 JRO,,Austria,Russia,,5
+"",,,Belgium,Russia,,1
+"",,,Germany,Russia,,39
+RO-01906 Total,,,,,,45
+RO-ID,Date of Departure type of operation,,MSSAC,Destination(s),Number of TCNs,
+RO-01907,10/08/2021 CRO,,France,Albania,,31
+RO-01907 Total,,,,,,31
+RO-01909,05/07/2021 NRO,,Italy,Tunisia,,29
+RO-01909 Total,,,,,,29
+RO-01911,09/08/2021 NRO,,Italy,Tunisia,,17
+RO-01911 Total,,,,,,17
+RO-01912,07/09/2021 CRO,,France,Albania,,33
+RO-01912 Total,,,,,,33
+RO-01913,14/09/2021 CRO,,France,Albania,,32
+RO-01913 Total,,,,,,32
+RO-01914,21/09/2021 CRO,,France,Albania,,31
+RO-01914 Total,,,,,,31
+RO-01915,28/09/2021 CRO,,France,Albania,,29
+RO-01915 Total,,,,,,29
+RO-01916,12/08/2021 NRO,,Italy,Tunisia,,33
+RO-01916 Total,,,,,,33
+RO-01917,31/08/2021 NRO,,Germany,Russia,,34
+RO-01917 Total,,,,,,34
+RO-01918,16/08/2021 NRO,,Italy,Tunisia,,9
+RO-01918 Total,,,,,,9
+RO-01919,19/08/2021 NRO,,Italy,Tunisia,,16
+RO-01919 Total,,,,,,16
+RO-01921,23/08/2021 NRO,,Italy,Tunisia,,21
+RO-01921 Total,,,,,,21
+RO-01922,06/10/2021 NRO,,Spain,Georgia,,11
+"",,,Spain,Albania,,27
+RO-01922 Total,,,,,,38
+RO-01923,08/10/2021 NRO,,Germany,North Macedonia,,19
+"",,,Germany,Serbia,,32
+RO-01923 Total,,,,,,51
+RO-01925,13/10/2021 NRO,,Germany,Armenia,,29
+RO-01925 Total,,,,,,29
+RO-01926,15/10/2021 NRO,,Germany,Kosovo*,,26
+"",,,Germany,Albania,,43
+RO-01926 Total,,,,,,69
+RO-01927,13/10/2021 NRO,,Germany,Tunisia,,19
+RO-01927 Total,,,,,,19
+RO-01929,14/10/2021 NRO,,Germany,North Macedonia,,16
+"",,,Germany,Serbia,,28
+RO-01929 Total,,,,,,44
+RO-01930,18/10/2021 NRO,,Germany,Pakistan,,32
+RO-01930 Total,,,,,,32
+RO-01931,21/10/2021 CRO,,Germany,Georgia,,49
+RO-01931 Total,,,,,,49
+RO-01933,26/10/2021 NRO,,Germany,Russia,,46
+RO-01933 Total,,,,,,46
+RO-01935,26/10/2021 JRO,,Austria,Bangladesh,,5
+"",,,Germany,Bangladesh,,33
+"",,,Romania,Bangladesh,,1
+RO-01935 Total,,,,,,39
+RO-01937,26/08/2021 NRO,,Italy,Tunisia,,31
+RO-01937 Total,,,,,,31
+RO-01938,31/08/2021 NRO,,Italy,Egypt,,13
+RO-01938 Total,,,,,,13
+RO-01939,14/10/2021 CRO,,France,Georgia,,16
+RO-ID,Date of Departure type of operation,,MSSAC,Destination(s),Number of TCNs,
+RO-01939 Total,,,,,,16
+RO-01940,30/08/2021 NRO,,Italy,Tunisia,,23
+RO-01940 Total,,,,,,23
+RO-01941,14/09/2021 NRO,,Germany,Serbia,,7
+"",,,Germany,Moldova,,45
+RO-01941 Total,,,,,,52
+RO-01943,02/09/2021 NRO,,Italy,Tunisia,,38
+RO-01943 Total,,,,,,38
+RO-01944,06/09/2021 NRO,,Italy,Tunisia,,25
+RO-01944 Total,,,,,,25
+RO-01945,07/09/2021 NRO,,Italy,Egypt,,20
+RO-01945 Total,,,,,,20
+RO-01946,09/09/2021 NRO,,Italy,Tunisia,,15
+RO-01946 Total,,,,,,15
+RO-01947,02/10/2021 NRO,,Italy,Nigeria,,19
+RO-01947 Total,,,,,,19
+RO-01949,13/09/2021 NRO,,Italy,Tunisia,,7
+RO-01949 Total,,,,,,7
+RO-01950,16/09/2021 NRO,,Italy,Tunisia,,26
+RO-01950 Total,,,,,,26
+RO-01951,12/10/2021 NRO,,Germany,Moldova,,30
+"",,,Germany,Ukraine,,2
+RO-01951 Total,,,,,,32
+RO-01952,20/09/2021 NRO,,Italy,Tunisia,,15
+RO-01952 Total,,,,,,15
+RO-01953,04/11/2021 CRO,,Germany,Georgia,,42
+"",,,Italy,Georgia,,7
+RO-01953 Total,,,,,,49
+RO-01954,11/11/2021 JRO,,Austria,Pakistan,,10
+"",,,Germany,Pakistan,,49
+"",,,Romania,Pakistan,,6
+RO-01954 Total,,,,,,65
+RO-01956,25/11/2021 NRO,,Germany,Azerbaijan,,43
+RO-01956 Total,,,,,,43
+RO-01957,17/11/2021 JRO,,Austria,Kosovo*,,3
+"",,,Austria,Albania,,2
+"",,,Germany,Kosovo*,,17
+"",,,Germany,Albania,,34
+"",,,Sweden,Kosovo*,,5
+"",,,Sweden,Albania,,2
+RO-01957 Total,,,,,,63
+RO-01958,23/11/2021 NRO,,Germany,Russia,,40
+RO-01958 Total,,,,,,40
+RO-01959,24/11/2021 NRO,,Germany,Tunisia,,23
+RO-01959 Total,,,,,,23
+RO-01961,23/11/2021 JRO,,Austria,Nigeria,,9
+"",,,Germany,Nigeria,,21
+"",,,Hungary,Nigeria,,2
+RO-01961 Total,,,,,,32
+RO-01963,30/11/2021 NRO,,Germany,Ghana,,22
+RO-01963 Total,,,,,,22
+RO-01964,01/12/2021 NRO,,Spain,Georgia,,11
+"",,,Spain,Albania,,18
+RO-01964 Total,,,,,,29
+RO-01965,23/09/2021 NRO,,Italy,Tunisia,,11
+RO-ID,Date of Departure type of operation,,MSSAC,Destination(s),Number of TCNs,
+RO-01965 Total,,,,,,11
+RO-01966,19/10/2021 CRO,,France,Albania,,34
+RO-01966 Total,,,,,,34
+RO-01967,26/10/2021 CRO,,France,Albania,,28
+RO-01967 Total,,,,,,28
+RO-01968,12/10/2021 CRO,,Belgium,Albania,,1
+"",,,France,Albania,,32
+RO-01968 Total,,,,,,33
+RO-01969,05/10/2021 CRO,,France,Albania,,29
+RO-01969 Total,,,,,,29
+RO-01970,24/09/2021 NRO,,Italy,Tunisia,,31
+RO-01970 Total,,,,,,31
+RO-01971,10/11/2021 JRO,,Germany,Albania,,15
+"",,,Germany,Moldova,,28
+"",,,Sweden,Albania,,4
+RO-01971 Total,,,,,,47
+RO-01972,18/11/2021 CRO,,Germany,Georgia,,41
+RO-01972 Total,,,,,,41
+RO-01973,02/12/2021 CRO,,Germany,Georgia,,44
+"",,,Sweden,Georgia,,13
+RO-01973 Total,,,,,,57
+RO-01974,04/11/2021 NRO,,Austria,Armenia,,1
+"",,,Austria,Georgia,,10
+RO-01974 Total,,,,,,11
+RO-01975,15/12/2021 JRO,,Bulgaria,Dominican Rep,,1
+"",,,Spain,Colombia,,51
+"",,,Spain,Dominican Rep,,9
+RO-01975 Total,,,,,,61
+RO-01976,21/12/2021 NRO,,Germany,Nigeria,,13
+RO-01976 Total,,,,,,13
+RO-01978,15/12/2021 NRO,,Germany,Tunisia,,15
+RO-01978 Total,,,,,,15
+RO-01979,21/12/2021 JRO,,Bulgaria,Russia,,1
+"",,,Germany,Russia,,60
+RO-01979 Total,,,,,,61
+RO-01980,27/09/2021 NRO,,Italy,Tunisia,,28
+RO-01980 Total,,,,,,28
+RO-01981,08/11/2021 JRO,,Germany,Senegal,,15
+"",,,Spain,Senegal,,1
+RO-01981 Total,,,,,,16
+RO-01982,02/12/2021 NRO,,Austria,Russia,,10
+RO-01982 Total,,,,,,10
+RO-01983,16/11/2021 NRO,,Germany,Armenia,,44
+RO-01983 Total,,,,,,44
+RO-01984,30/09/2021 NRO,,Italy,Tunisia,,39
+RO-01984 Total,,,,,,39
+RO-01985,01/10/2021 NRO,,Italy,Tunisia,,23
+RO-01985 Total,,,,,,23
+RO-01986,12/10/2021 JRO,,Austria,Nigeria,,12
+"",,,Norway,Nigeria,,5
+RO-01986 Total,,,,,,17
+RO-01987,07/10/2021 NRO,,Italy,Tunisia,,33
+RO-01987 Total,,,,,,33
+RO-01988,08/12/2021 NRO,,Germany,Montenegro,,42
+RO-01988 Total,,,,,,42
+RO-ID,Date of Departure type of operation,,MSSAC,Destination(s),Number of TCNs,
+RO-01989,09/10/2021 NRO,,Italy,Egypt,,25
+RO-01989 Total,,,,,,25
+RO-01990,10/11/2021 CRO,,France,Georgia,,23
+RO-01990 Total,,,,,,23
+RO-01991,30/11/2021 JRO,,Germany,Moldova,,17
+"",,,Germany,Ukraine,,39
+"",,,Spain,Ukraine,,7
+RO-01991 Total,,,,,,63
+RO-01992,11/10/2021 NRO,,Italy,Tunisia,,23
+RO-01992 Total,,,,,,23
+RO-01993,14/10/2021 NRO,,Italy,Tunisia,,21
+RO-01993 Total,,,,,,21
+RO-01994,09/11/2021 CRO,,Belgium,Albania,,1
+"",,,France,Albania,,35
+RO-01994 Total,,,,,,36
+RO-01995,16/11/2021 CRO,,France,Albania,,34
+RO-01995 Total,,,,,,34
+RO-01996,23/11/2021 CRO,,France,Albania,,30
+RO-01996 Total,,,,,,30
+RO-01997,30/11/2021 CRO,,France,Albania,,28
+RO-01997 Total,,,,,,28
+RO-01998,03/11/2021 CRO,,France,Albania,,32
+RO-01998 Total,,,,,,32
+RO-01999,07/12/2021 NRO,,Germany,Iraq,,12
+RO-01999 Total,,,,,,12
+RO-02000,14/12/2021 JRO,,Bulgaria,Armenia,,1
+"",,,Germany,Armenia,,19
+"",,,Sweden,Armenia,,1
+RO-02000 Total,,,,,,21
+RO-02001,14/12/2021 CRO,,Germany,Georgia,,55
+RO-02001 Total,,,,,,55
+RO-02002,14/12/2021 NRO,,Germany,Pakistan,,40
+RO-02002 Total,,,,,,40
+RO-02003,18/10/2021 NRO,,Italy,Tunisia,,40
+RO-02003 Total,,,,,,40
+RO-02004,21/10/2021 NRO,,Italy,Tunisia,,17
+RO-02004 Total,,,,,,17
+RO-02005,22/10/2021 NRO,,Italy,Tunisia,,35
+RO-02005 Total,,,,,,35
+RO-02006,28/10/2021 NRO,,Italy,Tunisia,,24
+RO-02006 Total,,,,,,24
+RO-02007,16/12/2021 NRO,,Germany,Kosovo*,,21
+"",,,Germany,Albania,,45
+RO-02007 Total,,,,,,66
+RO-02008,01/12/2021 NRO,,Germany,Kosovo*,,10
+"",,,Germany,Moldova,,26
+RO-02008 Total,,,,,,36
+RO-02010,04/12/2021 JRO,,Italy,Nigeria,,32
+"",,,Slovenia,Nigeria,,1
+RO-02010 Total,,,,,,33
+RO-02011,01/11/2021 NRO,,Italy,Tunisia,,22
+RO-02011 Total,,,,,,22
+RO-02012,04/11/2021 NRO,,Italy,Tunisia,,24
+RO-02012 Total,,,,,,24
+RO-02013,11/11/2021 NRO,,Italy,Tunisia,,35
+RO-ID,Date of Departure type of operation,,MSSAC,Destination(s),Number of TCNs,
+RO-02013 Total,,,,,,35
+RO-02014,20/12/2021 JRO,,Austria,Bangladesh,,1
+"",,,Greece,Bangladesh,,19
+RO-02014 Total,,,,,,20
+RO-02015,14/12/2021 CRO,,France,Albania,,30
+RO-02015 Total,,,,,,30
+RO-02016,28/12/2021 CRO,,Belgium,Albania,,1
+"",,,France,Albania,,20
+RO-02016 Total,,,,,,21
+RO-02017,21/12/2021 CRO,,France,Albania,,25
+RO-02017 Total,,,,,,25
+RO-02018,07/12/2021 CRO,,France,Albania,,28
+RO-02018 Total,,,,,,28
+RO-02019,16/12/2021 NRO,,Germany,Moldova,,38
+RO-02019 Total,,,,,,38
+RO-02020,30/11/2021 NRO,,Germany,Serbia,,45
+RO-02020 Total,,,,,,45
+RO-02022,15/11/2021 NRO,,Italy,Tunisia,,32
+RO-02022 Total,,,,,,32
+RO-02028,18/11/2021 NRO,,Italy,Tunisia,,35
+RO-02028 Total,,,,,,35
+RO-02029,22/11/2021 NRO,,Italy,Tunisia,,37
+RO-02029 Total,,,,,,37
+RO-02038,25/11/2021 NRO,,Italy,Tunisia,,34
+RO-02038 Total,,,,,,34
+RO-02040,29/11/2021 NRO,,Italy,Tunisia,,27
+RO-02040 Total,,,,,,27
+RO-02041,02/12/2021 NRO,,Italy,Tunisia,,15
+RO-02041 Total,,,,,,15
+RO-02042,06/12/2021 NRO,,Italy,Tunisia,,25
+RO-02042 Total,,,,,,25
+RO-02043,22/12/2021 NRO,,Spain,Mauritania,,13
+RO-02043 Total,,,,,,13
+RO-02044,15/12/2021 NRO,,Italy,Egypt,,9
+RO-02044 Total,,,,,,9
+RO-02048,13/12/2021 NRO,,Italy,Tunisia,,19
+RO-02048 Total,,,,,,19
+RO-02053,20/12/2021 NRO,,Italy,Tunisia,,22
+RO-02053 Total,,,,,,22
+RO-02065,30/12/2021 NRO,,Italy,Tunisia,,25
+RO-02065 Total,,,,,,25

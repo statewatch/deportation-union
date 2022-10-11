@@ -1,5 +1,82 @@
-readme outdated - changes in scripts on oct 10th not reflected
+# how-to
 
+`raw_data/frontex_docs_pdf` : convert files, e.g. with tabulizer, and save the converted files in `raw_data/frontex_docs_converted`.
+
+## file description
+
+`raw_data/deportation-union-data.xlsx`: Dataset from original deportation union report **with small manual corrections**, e.g. from `deportations 2015, 2016, 2017 data - corrected.xlsx` - so **don't replace with original file**, rather add data or corrections manually into this version.
+
+### `R_scripts/clean_data_2006_18` produces:
+
+`clean_data/by_dest_2006_18.csv`:
+- ROWID: unique identifier for operation per member state
+- N_RETURNEES
+- DEST
+- N_ESC
+- N_ESC_LEAD
+- check_ESC_OBS_MED_by_dest: TRUE if sum of N_ESC and N_ESC_LEAD equals the sum across the ROWID. if not true, use `N_ESC_OBS_MED` from `by_ms_2006_18` instead.
+
+`clean_data/by_ms_2006_18.csv`:
+- DATE
+- MSNAME
+- N_RETURNEES
+- N_FX_STAFF
+- N_ESC_OBS_MED
+- N_MEDS
+- N_OBS
+- N_MONITORS
+- FX_CONTRIB
+- ROID
+- OPTYPE
+- Notes/comments
+- ID: unique identifier for operation. ROID where available, else a number created ourselves.
+- MSISO
+- ROWID: unique identifier for operation per member state
+
+### `R_scripts/clean_data_2019_21` produces:
+
+`clean_data/by_dest_2006_18.csv`:
+- "ROID"
+- "MSNAME"
+- "DEST"
+- "N_RETURNEES"
+- "DATE"
+- "OPTYPE"
+
+`clean_data/by_ms_2019_21.csv`:
+- "ROID"
+- "DATE"
+- "MSISO"
+- "FX_CONTRIB"
+- "MSNAME"
+- "N_ESC_LEAD"
+- "N_ESC"
+- "FRESO_AP_CAT_1"
+- "FRESO_AP_CAT_2"
+- "FRESO_HQ_CAT_1"
+- "FRESO_HQ_CAT_2"
+- "FRESO_CAT_3"
+- "N_MEDS"
+- "N_OBS_MS"
+- "N_OBS_TC"
+- "N_MONITORS_NAT"
+- "N_MONITORS_POOL_MS"
+- "N_MONITORS_FX"
+- "N_MONITORS"
+- "N_OBS"
+- N_ESC_OBS_MED
+
+`clean_data/by_op_2019_21.csv`:
+- ROID
+- DATE
+- N_FX_STAFF
+
+### `R_scripts/export_data_d3.R` produces:
+
+`OPTYPE_YEAR_new.csv` with YEAR,KEY,CRO,JRO,NRO
+Note: When the same operation ID is used for multiple dates, they are counted as different operations. Only operations taking place the same day and sharing an ID are counted as the same operation.
+
+# readme from here outdated - changes in scripts on oct 10th not reflected
 
 ## Unresolved issues
 

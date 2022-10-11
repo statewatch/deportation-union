@@ -1,31 +1,33 @@
-YEAR,KEY,CRO,JRO,NRO
-2007,Number of deported people,0,428,0
-2007,Number of operations,0,53,0
-2008,Number of deported people,0,765,0
-2008,Number of operations,0,66,0
-2009,Number of deported people,0,1620,0
-2009,Number of operations,0,165,0
-2010,Number of deported people,0,1941,0
-2010,Number of operations,0,219,0
-2011,Number of deported people,0,2181,0
-2011,Number of operations,0,283,0
-2012,Number of deported people,0,2050,0
-2012,Number of operations,0,244,0
-2013,Number of deported people,0,2017,0
-2013,Number of operations,0,241,0
-2014,Number of deported people,132,2096,0
-2014,Number of operations,22,234,0
-2015,Number of deported people,336,3287,0
-2015,Number of operations,37,301,1
-2016,Number of deported people,662,5607,4182
-2016,Number of operations,62,403,97
-2017,Number of deported people,1371,7454,5264
-2017,Number of operations,113,576,150
-2018,Number of deported people,2448,6049,3656
-2018,Number of operations,247,436,140
-2019,Number of deported people,2403,5247,3253
-2019,Number of operations,64,142,124
-2020,Number of deported people,1281,1322,4718
-2020,Number of operations,36,38,151
-2021,Number of deported people,2015,2323,5756
-2021,Number of operations,61,53,162
+YEAR,KEY,CRO,JRO,NRO,unknown
+2006,Number of deported people,0,0,0,8
+2006,Number of operations,0,0,0,2
+2007,Number of deported people,0,428,0,0
+2007,Number of operations,0,31,0,0
+2008,Number of deported people,0,765,0,0
+2008,Number of operations,0,14,0,0
+2009,Number of deported people,0,1620,0,0
+2009,Number of operations,0,32,0,0
+2010,Number of deported people,0,1941,0,0
+2010,Number of operations,0,39,0,0
+2011,Number of deported people,0,2181,0,0
+2011,Number of operations,0,42,0,0
+2012,Number of deported people,0,2050,0,0
+2012,Number of operations,0,39,0,0
+2013,Number of deported people,0,2017,0,0
+2013,Number of operations,0,37,0,0
+2014,Number of deported people,132,2096,0,0
+2014,Number of operations,4,41,0,0
+2015,Number of deported people,336,3287,0,0
+2015,Number of operations,7,57,1,1
+2016,Number of deported people,662,5607,4182,11
+2016,Number of operations,16,120,95,3
+2017,Number of deported people,1371,7454,5264,53
+2017,Number of operations,39,153,150,2
+2018,Number of deported people,2448,6049,3656,0
+2018,Number of operations,67,142,140,0
+2019,Number of deported people,2403,5247,3253,0
+2019,Number of operations,64,142,124,0
+2020,Number of deported people,1281,1322,4718,0
+2020,Number of operations,36,38,151,0
+2021,Number of deported people,2015,2323,5756,0
+2021,Number of operations,62,63,211,0
