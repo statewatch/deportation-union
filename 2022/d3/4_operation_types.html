@@ -1,0 +1,262 @@
+<!--https://bl.ocks.org/LemoNode/21d81ff82e80cbe4acbfee28ff060b11-->
+<html>
+  <head>
+    <title>4 - types operations</title>
+    <meta charset="utf-8" />
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+  </head>
+
+  <body>
+    <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+    <p>
+      Select the series to display:
+      <select id="KEY"></select>
+    </p>
+
+    <svg id="chart"></svg>
+
+    <div class="caption">
+      <p>
+        <a href="https://raw.githubusercontent.com/statewatch/deportation-union-2022/main/clean_data/OPTYPE_YEAR_new.csv" target="_blank"
+          >Get the raw data behind this visualisation</a
+        >
+      </p>
+    </div>
+    <div class="caption">
+      <p>
+        Note: When the same operation ID is used for multiple dates, they are
+        counted as different operations. Only operations taking place the same
+        day and sharing an ID are counted as the same operation.
+      </p>
+    </div>
+
+    <script>
+      d3.formatDefaultLocale({
+        decimal: ",",
+        thousands: ".",
+        grouping: [3],
+        currency: ["€", ""],
+      });
+
+      var isMobile = window.innerWidth < 768;
+
+      var menu = d3.select("#KEY");
+
+      d3.csv("https://raw.githubusercontent.com/statewatch/deportation-union-2022/main/clean_data/OPTYPE_YEAR_new.csv").then((d) => chart(d));
+
+      function chart(csv) {
+        var keys = csv.columns.slice(2);
+
+        var KEY = [...new Set(csv.map((d) => d.KEY))];
+
+        var options = d3
+          .select("#KEY")
+          .selectAll("option")
+          .data(KEY)
+          .enter()
+          .append("option")
+          .text((d) => d);
+
+        var svg = d3.select("#chart"),
+          margin = { top: 20, left: 60, bottom: 30, right: 15 },
+          width = window.innerWidth - margin.left - margin.right,
+          height = window.innerHeight - margin.top - margin.bottom - 200;
+        // -100 height to leave space for the selector within iframe
+
+        svg
+          .attr("width", width + margin.left) // margin.right should stay empty
+          .attr("height", height + margin.top); // margin.bottom should stay empty
+
+        var tooltip = d3.select("body").append("div").attr("class", "tooltip");
+
+        var x = d3
+          .scaleBand()
+          .range([margin.left, width + margin.left])
+          .padding(0.1)
+          .paddingOuter(0.2)
+          .paddingInner(0.2);
+
+        var y = d3.scaleLinear().range([margin.top, height - margin.bottom]);
+
+        var yAxis = svg
+          .append("g")
+          .attr("transform", `translate(${margin.left},0)`)
+          .attr("class", "y-axis");
+
+        var xAxis = svg
+          .append("g")
+          .attr("transform", `translate(0,${height - margin.bottom})`)
+          .attr("class", "x-axis");
+
+        var z = d3
+          .scaleOrdinal()
+          .range([
+            "#7a6989",
+            "#a9b4c5",
+            "#ed9c41",
+            "#a95400",
+            "#a95400",
+            "#a95400",
+            "#a95400",
+          ])
+          .domain([
+            "JRO",
+            "CRO",
+            "NRO",
+            "VDO",
+            "VRD",
+            "FRONTEX-RO",
+            "Humanitarian VR",
+            "unknown",
+          ]);
+
+        update(d3.select("#KEY").property("value"), 0);
+
+        function update(input, speed) {
+          var data = csv.filter((f) => f.KEY == input);
+
+          data.forEach(function (d) {
+            d.total = d3.sum(keys, (k) => +d[k]);
+            return d;
+          });
+
+          console.log(data);
+
+          y.domain([d3.max(data, (d) => d.total), 0]).nice();
+          svg
+            .selectAll(".y-axis")
+            .transition()
+            .duration(speed)
+            .call(d3.axisLeft(y));
+
+          x.domain(data.map((d) => d.YEAR));
+          svg
+            .selectAll(".x-axis")
+            .transition()
+            .duration(speed)
+            .call(d3.axisBottom(x))
+            .selectAll("text") // Select all x-axis tick labels
+            .style("text-anchor", isMobile ? "end" : "middle")
+            .attr("dx", isMobile ? "-.8em" : "0")
+            .attr("dy", isMobile ? "-.3em" : "0.7em")
+            .attr("transform", isMobile ? "rotate(-90)" : "rotate(0)");
+
+          var group = svg
+            .selectAll("g.layer")
+            .data(d3.stack().keys(keys)(data), (d) => d.key);
+
+          group.exit().remove();
+
+          group
+            .enter()
+            .insert("g", ".y-axis")
+            .append("g")
+            .classed("layer", true)
+            .attr("fill", (d) => z(d.key));
+
+          var bars = svg
+            .selectAll("g.layer")
+            .selectAll("rect")
+            .data(
+              (d) => d,
+              (e) => e.data.YEAR
+            );
+
+          bars.exit().remove();
+
+          bars
+            .enter()
+            .append("rect")
+            .attr("width", x.bandwidth())
+            .merge(bars)
+            .transition()
+            .duration(speed)
+            .attr("x", (d) => x(d.data.YEAR))
+            .attr("y", (d) => y(d[1]))
+            .attr("height", (d) => y(d[0]) - y(d[1]));
+
+          d3.selectAll("rect")
+            .on("mouseover", function (d) {
+              var subgroupName = d3.select(this.parentNode).datum().key;
+
+              var delta = d[1] - d[0];
+              var xPos = parseFloat(d3.select(this).attr("x"));
+              var yPos = parseFloat(d3.select(this).attr("y"));
+              var height = parseFloat(d3.select(this).attr("height"));
+
+              // Adjust tooltip position based on mouse x-position
+              var tooltipX =
+                d3.event.pageX > window.innerWidth / 2
+                  ? d3.event.pageX - 150
+                  : d3.event.pageX + 10;
+
+              d3.select(this)
+                .attr("stroke", "#333333")
+                .attr("stroke-width", 0.8)
+                .attr("opacity", 1);
+
+              d3.select(".tooltip")
+                .style("left", tooltipX + "px") // Use the adjusted tooltipX position
+                .style("top", d3.event.pageY + "px")
+                .style("display", "inline-block")
+                .html(
+                  "<div class = 'tooltip-title'>" +
+                    menu.property("value") +
+                    "<br>" +
+                    "in " +
+                    +d.data.YEAR +
+                    "</div>" +
+                    "<div class = 'tooltip-content'>" +
+                    subgroupName +
+                    ":" +
+                    "<br>" +
+                    "<strong>" +
+                    delta +
+                    "</strong>" +
+                    "</div>"
+                );
+            })
+            .on("mousemove", function () {
+              // Adjust tooltip position based on mouse x-position
+              var tooltipX =
+                d3.event.pageX > window.innerWidth / 2
+                  ? d3.event.pageX - 150
+                  : d3.event.pageX + 10;
+
+              d3.select(".tooltip")
+                .style("left", tooltipX + "px") // Use the adjusted tooltipX position
+                .style("top", d3.event.pageY + "px");
+            })
+            .on("mouseout", function () {
+              d3.select(".tooltip").style("display", "none");
+              d3.select(this).attr("stroke", "white").attr("stroke-width", 0);
+            });
+
+          var text = svg.selectAll(".text").data(data, (d) => d.YEAR);
+
+          text.exit().remove();
+
+          text
+            .enter()
+            .append("text")
+            .attr("class", "mobile-hidden text")
+            .attr("text-anchor", "middle")
+            .merge(text)
+            .transition()
+            .duration(speed)
+            .attr("x", (d) => x(d.YEAR) + x.bandwidth() / 2)
+            .attr("y", (d) => y(d.total) - 5)
+            .text((d) => d.total);
+        }
+
+        var select = d3.select("#KEY").on("change", function () {
+          update(this.value, 750);
+        });
+
+        var checkbox = d3.select("#sort").on("click", function () {
+          update(select.property("value"), 750);
+        });
+      }
+    </script>
+  </body>
+</html>

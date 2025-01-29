@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>iframes overview</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      @media (min-width: 768px) {
+        /* Desktop styles */
+        iframe.height1000 {
+          height: 1000px; /* Use the specified height from the iframe tag */
+        }
+        iframe.height600 {
+          height: 600px; /* Use the specified height from the iframe tag */
+        }
+        iframe.height500 {
+          height: 500px; /* Use the specified height from the iframe tag */
+        }
+      }
+
+      @media (max-width: 767px) {
+        /* Mobile styles */
+        iframe.height1000 {
+          height: 100vh; /* Use the specified height from the iframe tag */
+        }
+        iframe.height600 {
+          height: 70vh; /* Use the specified height from the iframe tag */
+        }
+        iframe.height500 {
+          height: 55vh; /* Use the specified height from the iframe tag */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <link href="stylesheet.css" rel="stylesheet" type="text/css">
+    <h3>[Title to be defined in article page, e.g. Deportations by EU states and destinations]</h3>
+    <iframe class = "height1000" src="0_deportations_sankey.html" width="100%" height="1000" style="border:0px;"></iframe>
+    <h3>[Title to be defined in article page, e.g. Deportations by years, EU states and destinations]</h3>
+    <iframe class = "height600" src="1_deportations_barchart.html" width="100%" height="600" style="border:0px;"></iframe>
+    <h3>[Title to be defined in article page, e.g. Frontex contributions by years and recieving EU states]</h3>
+    <iframe class = "height500" src="2_fx_contributions_states.html" width="100%" height="500" style="border:0px;"></iframe>
+    <h3>[Title to be defined in article page, e.g. Frontex contribution per deported person by destinations]</h3>
+    <iframe class = "height500" src="3_fx_contributions_pp_dest.html" width="100%" height="500" style="border:0px;"></iframe>
+    <h3>[Title to be defined in article page, e.g. Number of operations and deported people, by years and operation type]</h3>
+    <iframe class = "height500" src="4_operation_types.html" width="100%" height="500" style="border:0px;"></iframe>
+  </body>
+</html>

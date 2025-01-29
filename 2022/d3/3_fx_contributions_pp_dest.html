@@ -1,0 +1,180 @@
+<!--https://bl.ocks.org/LemoNode/21d81ff82e80cbe4acbfee28ff060b11-->
+<html>
+  <head>
+    <title>3 - destinations</title>
+    <meta charset="utf-8" />
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+  </head>
+
+  <body>
+    <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+
+    <svg id="chart"></svg>
+
+    <div class="caption">
+      <p>
+        <a href="https://raw.githubusercontent.com/statewatch/deportation-union-2022/main/clean_data/CONTRIB_PP_BY_DEST_new.csv" target="_blank"
+          >Get the raw data behind this visualisation</a
+        >
+      </p>
+    </div>
+    <div class="caption">
+      <p>
+        Frontex contributions for return operations per person by destination,
+        average across years. To avoid distorted data, only destinations with at
+        least 10 deported people (across the time period) were included and only
+        operations with exactly one destination were considered. The 25
+        destinations with highest Frontex contribution rates per person as well
+        as the overall average are shown.
+      </p>
+    </div>
+
+    <script>
+      d3.formatDefaultLocale({
+        decimal: ",",
+        thousands: ".",
+        grouping: [3],
+        currency: ["€", ""],
+      });
+
+      var isMobile = window.innerWidth < 768;
+
+      d3.csv("https://raw.githubusercontent.com/statewatch/deportation-union-2022/main/clean_data/CONTRIB_PP_BY_DEST_new.csv").then((d) => chart(d));
+
+      function chart(csv) {
+        var data = csv.map(function (d) {
+          d.FX_CONTRIB_PP = +d.FX_CONTRIB_PP;
+          return d;
+        });
+
+        console.log(data);
+
+        var svg = d3.select("#chart"),
+          margin = { top: 20, left: 50, bottom: 70, right: 15 },
+          width = window.innerWidth - margin.left - margin.right,
+          height = window.innerHeight - margin.top - margin.bottom - 170;
+        // -100 height to leave space for the selector within iframe
+
+        svg
+          .attr("width", width + margin.left) // margin.right should stay empty
+          .attr("height", height + margin.top); // margin.bottom should stay empty
+
+        var tooltip = d3.select("body").append("div").attr("class", "tooltip");
+
+        var x = d3
+          .scaleBand()
+          .range([margin.left, width + margin.left - 3]) //3px to avoid clipping of label
+          .padding(0.1)
+          .paddingOuter(0.2)
+          .paddingInner(0.2)
+          .domain(
+            data.map(function (d) {
+              return d.DEST;
+            })
+          );
+
+        var y = d3
+          .scaleLinear()
+          .range([height - margin.bottom, margin.top])
+          .domain([0, d3.max(data, (d) => d.FX_CONTRIB_PP)]);
+
+        var yAxis = svg
+          .append("g")
+          .attr("transform", `translate(${margin.left},0)`)
+          .attr("class", "y-axis");
+
+        var xAxis = svg
+          .append("g")
+          .attr("transform", `translate(0,${height - margin.bottom})`)
+          .attr("class", "x-axis grey_labels");
+
+        var z = d3
+          .scaleOrdinal()
+          .range(["#d5791f"])
+          .domain(["average"])
+          .unknown("#7a6989");
+
+        data.forEach(function (d) {
+          d.FX_CONTRIB_PP = +d.FX_CONTRIB_PP;
+          return d;
+        });
+
+        svg
+          .selectAll(".y-axis")
+          .call(d3.axisLeft(y).tickFormat((d) => d3.format("$,.0s")(d)));
+
+        svg
+          .selectAll(".x-axis")
+          .call(d3.axisBottom(x))
+          .selectAll("text") // Select all x-axis tick labels
+          .style("text-anchor", "end")
+          .attr("dx", "-.8em")
+          .attr("dy", "-.3em")
+          .attr("dy", "-.3em")
+          .style("font-size", isMobile ? "0.7rem" : "0.85rem")
+          .attr("transform", "rotate(-90)");
+
+        svg
+          .selectAll("div")
+          .data(data)
+          .enter()
+          .append("rect")
+          .attr("class", "bar")
+          .attr("width", x.bandwidth())
+          .attr("stroke", "white")
+          .attr("stroke-width", 0)
+          .attr("fill", (d) => z(d.DEST))
+          .attr("x", (d) => x(d.DEST))
+          .attr("y", (d) => y(d.FX_CONTRIB_PP))
+          .attr("height", (d) => y(0) - y(d.FX_CONTRIB_PP))
+          .on("mouseover", function (d) {
+            d3.select(this)
+              .attr("stroke", "#333333")
+              .attr("stroke-width", 0.8)
+              .attr("opacity", 1);
+
+            // Adjust tooltip position based on mouse x-position
+            var tooltipX =
+              d3.event.pageX > window.innerWidth / 2
+                ? d3.event.pageX - 150
+                : d3.event.pageX + 10;
+
+            d3.select(".tooltip")
+              .style("left", tooltipX + "px") // Use the adjusted tooltipX position
+              .style("top", d3.event.pageY + "px")
+              .style("display", "inline-block")
+              .html(
+                "<div class = 'tooltip-title'>" +
+                  "<strong>" +
+                  d3.format("$,.0f")(d.FX_CONTRIB_PP) +
+                  "</strong> per person" +
+                  "<br>" +
+                  "</div>" +
+                  "<div class = 'tooltip-content'>" +
+                  "average across " +
+                  d.N_OPS +
+                  " operation(s) and " +
+                  d.N_RETURNEES +
+                  " people" +
+                  "</div>"
+              );
+          })
+          .on("mousemove", function () {
+            // Adjust tooltip position based on mouse x-position
+            var tooltipX =
+              d3.event.pageX > window.innerWidth / 2
+                ? d3.event.pageX - 150
+                : d3.event.pageX + 10;
+
+            d3.select(".tooltip")
+              .style("left", tooltipX + "px") // Use the adjusted tooltipX position
+              .style("top", d3.event.pageY + "px");
+          })
+          .on("mouseout", function () {
+            d3.select(".tooltip").style("display", "none");
+            d3.select(this).attr("stroke", "white").attr("stroke-width", 0);
+          });
+      }
+    </script>
+  </body>
+</html>

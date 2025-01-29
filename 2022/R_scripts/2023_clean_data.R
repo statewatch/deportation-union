@@ -1,0 +1,332 @@
+library(needs)
+
+needs(tidyverse,
+      ggplot2,
+      readxl,
+      glue,
+      wbstats)
+
+temp <- bind_rows(read_excel("../raw_data/230307/Returns_CF_2013-2018.xlsx", sheet = 2),
+                  read_excel("../raw_data/returns_cf_2006_2012.xlsx"))%>%
+  bind_rows(read_excel("../raw_data/230720/Document-PAD-2023-00237.xlsx", sheet = 2))
+
+returnees <- temp %>%
+  rename(ROID = 1, DATE = 2, MSNAME = MS, DEST = 4, N_RETURNEES = 5)%>%
+  mutate(DEST = str_to_title(str_remove_all(DEST, "\\*")))%>%
+  # bind_rows(returnees_old)%>%
+  mutate(MSNAME = str_to_title(MSNAME),
+         DEST = case_when(
+           grepl("Congo",DEST) & grepl ("Democratic",DEST) ~ "Congo DR",
+           grepl("Moldova", DEST) ~ "Moldova",
+           grepl("Syria", DEST) ~ "Syria",
+           grepl("Russia", DEST) ~ "Russia",
+           DEST == "Bosnia And Herzegovina" ~ "Bosnia and Herzegovina",
+           T ~ DEST
+         ))
+
+write_csv(returnees, "../clean_data/returnees.csv")
+
+N_RETURNEES_MSNAME_DEST <- returnees %>%
+  group_by(DEST,MSNAME)%>%
+  summarize(N_RETURNEES = sum(N_RETURNEES))
+
+TOP_15_MSSTATE <- N_RETURNEES_MSNAME_DEST %>%
+  group_by(MSNAME)%>%
+  summarize(N = sum(N_RETURNEES))%>%
+  arrange(desc(N))%>%
+  head(15)
+
+TOP_15_DEST <- N_RETURNEES_MSNAME_DEST %>%
+  group_by(DEST)%>%
+  summarize(N = sum(N_RETURNEES))%>%
+  arrange(desc(N))%>%
+  head(15)
+
+TOP_15_MSSTATES_DESTS <- N_RETURNEES_MSNAME_DEST %>%
+  # they need to be sorted in the order that the nodes shall appear
+  group_by(MSNAME)%>%
+  mutate(N_MS = sum(N_RETURNEES))%>%
+  group_by(DEST)%>%
+  mutate(N_DEST = sum(N_RETURNEES))%>%
+  filter(MSNAME %in% TOP_15_MSSTATE$MSNAME & DEST %in% TOP_15_DEST$DEST)%>%
+  arrange(desc(N_DEST))%>%
+  arrange(desc(N_MS))%>%
+  select(-N_DEST, -N_MS)
+
+write_csv(N_RETURNEES_MSNAME_DEST, "../clean_data/N_RETURNEES_MSNAME_DEST_new.csv")
+
+write_csv(TOP_15_MSSTATES_DESTS, "../clean_data/N_RETURNEES_MSNAME_DEST_ROUTES_MIN_15_new.csv")
+
+temp_order <- returnees %>%
+  mutate(YEAR = ymd(DATE))%>%
+  group_by(MSNAME, YEAR)%>%
+  summarize(N_RETURNEES = sum(N_RETURNEES, na.rm = TRUE))%>%
+  group_by(MSNAME)%>%
+  summarize(total_over_years = sum(N_RETURNEES, na.rm = T))%>%
+  filter(total_over_years > 0)%>%
+  arrange(desc(total_over_years))
+
+years <- returnees %>%
+  mutate(YEAR = year(ymd(DATE)))%>%
+  arrange(YEAR)%>%
+  pull(YEAR)%>%
+  unique()
+
+msnames <- returnees %>%
+  arrange(MSNAME)%>%
+  pull(MSNAME)%>%
+  unique()
+
+N_RETURNEES_YEARS_MSNAME <- returnees %>%
+  mutate(YEAR = year(ymd(DATE)))%>%
+  group_by(MSNAME, YEAR)%>%
+  summarize(DEST = "all destinations", N_RETURNEES = sum(N_RETURNEES, na.rm = TRUE)) %>%
+  bind_rows(returnees %>%
+              mutate(YEAR = year(ymd(DATE)))%>%
+              group_by(MSNAME, DEST, YEAR)%>%
+              summarize(N_RETURNEES = sum(N_RETURNEES, na.rm = TRUE)))%>%
+  # create each YEAR for each combo
+  spread(key = YEAR, value = N_RETURNEES)%>%
+  mutate(across(c(as.name(years[1]):as.name(years[length(years)])), ~replace_na(.,0)))%>%
+  gather(-MSNAME, -DEST, key = YEAR, value = N_RETURNEES)%>%
+  filter(N_RETURNEES > 0)%>%
+  spread(key = MSNAME, value = N_RETURNEES)%>%
+  dplyr::mutate(across((as.name(msnames[1]):as.name(msnames[length(msnames)])), ~replace_na(.,0)))%>%
+  select(append(append("YEAR", "DEST"), temp_order$MSNAME))%>%
+  mutate(temp_order = case_when(
+    DEST == "all destinations" ~ 1,
+    TRUE ~ 0
+  ))%>%
+  arrange(desc(temp_order))%>%
+  select(-temp_order)
+
+write_csv(N_RETURNEES_YEARS_MSNAME, "../clean_data/N_RETURNEES_YEARS_MSNAME_new.csv")
+
+
+## Operation type
+
+temp <- bind_rows(read_excel("../raw_data/230307/Returns_CF_2013-2018.xlsx", sheet = 1),
+                  read_excel("../raw_data/230328/Returns_CF_2006-2012.xlsx", sheet = 1))%>%
+  bind_rows(read_excel("../raw_data/230720/Document-PAD-2023-00237.xlsx", sheet = 1))%>%
+  select("DATE" = 1, OPTYPE = 2, ROID)
+
+operations <- temp %>%
+  ## drop date to avoid mismatches caused by differing dates
+  ## RO-ID is unique identifier
+  select(-DATE)%>%
+  full_join(returnees)%>%
+  mutate(OPTYPE = if_else(is.na(OPTYPE), "unknown", OPTYPE))
+
+OPTYPE_YEAR <- operations %>%
+  group_by(ROID, DATE, OPTYPE)%>%
+  summarize(N_RETURNEES = sum(N_RETURNEES, na.rm=T))%>%
+  ungroup()%>%
+  select(DATE, N_RETURNEES, OPTYPE)%>%
+  mutate(DATE = ymd(DATE))%>%
+  mutate(YEAR = year(DATE))%>%
+  group_by(YEAR, OPTYPE)%>%
+  summarize(`Number of deported people` = sum(N_RETURNEES, na.rm = T), 
+            `Number of operations` = n())%>%
+  mutate(OPTYPE = if_else(is.na(OPTYPE), "unknown", OPTYPE))%>%
+  gather(-YEAR, -OPTYPE, key = KEY, value = value)%>%
+  mutate(OPTYPE = factor(OPTYPE, levels = c('JRO', 'CRO','NRO', 'VDO', 'VRD', 'FRONTEX-RO', 'Humanitarian VR', 'unknown')))%>%
+  arrange(OPTYPE)%>%
+  spread(key = OPTYPE, value = value)%>%
+  mutate(across(where(is.numeric), ~replace_na(., 0)))
+
+write_csv(OPTYPE_YEAR, "../clean_data/OPTYPE_YEAR_new.csv")
+
+## CONTRIBUTIONS
+
+iso_lookup <- wb_countries()%>%
+  mutate(country = str_replace_all(country, c("Czechia"= "Czech Republic", "Slovak Republic" = "Slovakia")))
+
+temp <- read_excel("../raw_data/230328/JRO_2008.xlsx", sheet = 1,
+                   col_names = c("info", "MS", "EUR"))%>%
+  mutate(YEAR = 2008)%>%
+  bind_rows(read_excel("../raw_data/230328/JRO_2009.xlsx", sheet = 1,
+            col_names = c("ro_nr", "MS", "N_ESC", "EUR"))%>%
+              mutate(YEAR = 2009))%>%
+  bind_rows(read_excel("../raw_data/230328/JRO_2010.xlsx", sheet = 1,
+                       col_names = c("ro_nr", "MS", "N_ESC", "EUR"))%>%
+              mutate(YEAR = 2010))%>%
+  bind_rows(read_excel("../raw_data/230328/JRO_2011.xlsx", sheet = 1,
+                       col_names = c("ro_nr", "MS", "N_ESC", "EUR"))%>%
+  mutate(YEAR = 2011))%>%
+  bind_rows(read_excel("../raw_data/230328/JRO_2012.xlsx", sheet = 1,
+                       col_names = c("ro_nr", "MS", "N_ESC", "EUR"))%>%
+              mutate(YEAR = 2012))%>%
+  bind_rows(read_excel("../raw_data/230307/Returns_CF_2013-2018.xlsx", sheet = 13,
+                       col_names = c("ro_nr", "MS", "N_ESC", "EUR"))%>%
+  mutate(YEAR = 2013))%>%
+  bind_rows(read_excel("../raw_data/230307/Returns_CF_2013-2018.xlsx", sheet = 12,
+                       col_names = c("ro_nr", "MS", "N_ESC", "EUR"))%>%
+  mutate(YEAR = 2014))%>%
+  bind_rows(read_excel("../raw_data/230307/Returns_CF_2013-2018.xlsx", sheet = 11,
+                       col_names = c("ro_nr_2015", "MS", "N_ESC", "EUR"))%>%
+  mutate(YEAR = 2015))%>%
+  mutate(DATE = dmy(str_remove(str_sub(info,-13,-1), "-\\d*")))%>%
+  mutate(ro_nr = str_extract(ro_nr, "\\d*"))%>%
+  fill(ro_nr, ro_nr_2015, DATE, .direction = "down")%>%
+  mutate(ROID = glue('RO-{YEAR}-{str_pad(ro_nr, 3, "left", "0")}'))%>%
+  left_join(operations %>%
+              filter(year(DATE) == 2008)%>%
+              select(DATE, ROID_y = ROID),
+            by = "DATE")%>%
+  mutate(ROID = case_when(YEAR == 2008 ~ ROID_y, 
+                          YEAR == 2015 ~ ro_nr_2015, 
+                          TRUE ~ ROID))%>%
+  mutate(EUR = as.numeric(EUR))%>%
+  filter(!is.na(MS) & !is.na(EUR))%>%
+  filter(!(MS %in% c("TOTAL COST", "Sum")))%>%
+  mutate(MS = str_to_title(MS),
+         MS = str_replace_all(MS, "Fx Missions|Fx Mission", "Frontex"),
+         MS = str_remove_all(MS, "Observers|Observer|Obs|\\(|\\)|_observers|_cancelled|_ombudsman|_stopover|Cancelled|_no Costs|_jcc With At|Cancellation|_cancellation|_observer|_monitor|_rf"),
+         MS = trimws(MS),
+         MS = case_when(
+           grepl("Netherland", MS) ~ "Netherlands",
+           grepl("Frontex", MS) ~ "Frontex",
+           MS == "Uk" ~ "United Kingdom",
+           MS == "Geramny" ~ "Germany",
+           T ~ MS))%>%
+  left_join(iso_lookup %>%
+              select(MS = country, MSISO = iso3c))%>%
+  mutate(MSISO = if_else(MS == "Frontex", "FX", MSISO))%>%
+  filter(EUR > 0)%>%
+  filter(MS != "Be, Ro,Si")%>%
+  select(ROID, DATE, YEAR, MS, MSISO, EUR)
+
+temp2 <- read_excel("../raw_data/230307/Returns_CF_2013-2018.xlsx", sheet = 10)%>%
+  rename("ro_nr" =1, "MS" = 2, "DATE" = 3, "EUR" = 4)%>%
+  mutate(YEAR = 2016, DATE = ymd(DATE))%>%
+  fill(ro_nr, .direction="down")%>%
+  mutate(ROID = glue('RO-{YEAR}-{str_pad(ro_nr, 3, "left", "0")}'))%>%
+  mutate(MS = str_to_title(MS),
+         MS = str_replace_all(MS, "Fx Missions|Fx Mission", "Frontex"),
+         MS = str_remove_all(MS, "Observers|Observer|Obs|\\(|\\)|_observers|_cancelled|_ombudsman|_stopover|Cancelled|_no Costs|_jcc With At|Cancellation|_cancellation|_observer|_monitors|_monitor|_rf"),
+         MS = trimws(MS),
+         MS = case_when(
+           grepl("Netherland", MS) ~ "Netherlands",
+           grepl("Frontex", MS) ~ "Frontex",
+           grepl("Macedonia", MS) ~ "North Macedonia",
+           grepl("Germany", MS) ~ "Germany",
+           MS == "Uk" ~ "United Kingdom",
+           ## this one is a guess
+           MS == "Gr" ~ "Greece",
+           MS == "Geramny" ~ "Germany",
+           T ~ MS))%>%
+  left_join(iso_lookup %>%
+              select(MS = country, MSISO = iso3c))%>%
+  mutate(MSISO = if_else(MS == "Frontex", "FX", MSISO))%>%
+  mutate(EUR = as.numeric(EUR))%>%
+  filter(EUR > 0)%>%
+  filter(!grepl("Ro To", MS) & MS != "Ro Nigeria")%>%
+  select(ROID, DATE, YEAR, MS, MSISO, EUR)
+
+temp3 <- read_excel("../raw_data/230307/Returns_CF_2013-2018.xlsx", sheet = 9)%>%
+  rename("Date" = 1, "MS" = 2, "RO" = 3)%>%
+  left_join(iso_lookup %>%
+              select(MS = country, "MSISO" = iso3c))%>%
+  rename(ROID = RO, DATE = Date, EUR = "TOTAL PAID")%>%
+  mutate(YEAR = year(DATE))
+
+temp4 <- read_excel("../raw_data/230307/Returns_CF_2013-2018.xlsx", sheet = 8)%>%
+  bind_rows(read_excel("../raw_data/230307/Returns_CF_2013-2018.xlsx", sheet = 7))%>%
+  bind_rows(read_excel("../raw_data/230720/Document-PAD-2023-00237.xlsx", sheet = 5))%>%
+  bind_rows(read_excel("../raw_data/230720/Document-PAD-2023-00237.xlsx", sheet = 6))%>%
+  bind_rows(read_excel("../raw_data/230720/Document-PAD-2023-00237.xlsx", sheet = 7))%>%
+  bind_rows(read_excel("../raw_data/230720/Document-PAD-2023-00237.xlsx", sheet = 8))%>%
+  rename("MSISO" = "MS/SAC/TC")%>%
+  left_join(iso_lookup %>%
+              select(MS = country,  MSISO = iso3c))%>%
+  mutate(MS = if_else(MSISO == "FX", "Frontex", MS))%>%
+  rename(ROID = RO, DATE = Date, EUR = "TOTAL PAID")%>%
+  mutate(YEAR = year(DATE))%>%
+  filter(EUR > 0 & !is.na(YEAR))
+
+FX_CONTRIB <- bind_rows(temp, temp2)%>%
+  bind_rows(temp3)%>%
+  bind_rows(temp4)
+
+countries <- FX_CONTRIB %>%
+  arrange(MS)%>%
+  pull(MS)%>%
+  unique()
+
+temp_order <- FX_CONTRIB %>%
+  rename(MSNAME = MS, FX_CONTRIB = EUR)%>%
+  group_by(MSNAME)%>%
+  summarize(total_over_years = sum(FX_CONTRIB, na.rm = T))%>%
+  filter(total_over_years > 0)%>%
+  arrange(desc(total_over_years))
+
+FX_CONTRIB_YEARS_MSNAME_TOTAL <- FX_CONTRIB %>%
+  rename(MSNAME = MS, FX_CONTRIB = EUR)%>%
+  group_by(MSNAME, YEAR) %>%
+  summarize(FX_CONTRIB = sum(FX_CONTRIB, na.rm = T))%>%
+  spread(key = MSNAME, value = FX_CONTRIB)%>%
+  dplyr::mutate(across(c(as.name(countries[1]):as.name(countries[length(countries)])), ~replace_na(.,0)))%>%
+  select(append("YEAR", temp_order$MSNAME))%>%
+  mutate(MSNAME = "all EU member states")
+
+FX_CONTRIB_YEARS_MSNAME_STATES <- FX_CONTRIB_YEARS_MSNAME_TOTAL%>%
+  select(-MSNAME)%>%
+  gather(-YEAR, key = MSNAME, value = value)%>%
+  mutate(key = MSNAME)%>%
+  spread(key = key, value = value)%>%
+  dplyr::mutate(across(c(as.name(countries[1]):as.name(countries[length(countries)])), ~replace_na(.,0)))
+
+FX_CONTRIB_YEARS_MSNAME <- bind_rows(FX_CONTRIB_YEARS_MSNAME_TOTAL,FX_CONTRIB_YEARS_MSNAME_STATES)%>%
+  relocate(MSNAME, .before = "Germany")
+
+write_csv(FX_CONTRIB_YEARS_MSNAME, "../clean_data/FX_CONTRIB_YEARS_MSNAME_new.csv")
+
+
+# FX CONTIB pp
+
+costs_operations <- returnees %>%
+  group_by(ROID, DEST, DATE)%>%
+  summarize(N_RETURNEES = sum(N_RETURNEES, na.rm=T))%>%
+  group_by(ROID, DATE)%>%
+  mutate(n_dest = n())%>%
+  filter(n_dest == 1)%>%
+  select(-n_dest)%>%
+  left_join(FX_CONTRIB %>%
+              group_by(ROID)%>%
+              summarize(EUR = sum(EUR, na.rm=T)))%>%
+  filter(!is.na(EUR))%>%
+  filter(N_RETURNEES >= 10)%>%
+  mutate(N_OPS = 1)
+
+CONTRIB_PP_BY_DEST <- costs_operations %>%
+  group_by(DEST)%>%
+  summarise(across(where(is.numeric), ~ sum(., na.rm=T)))%>%
+  # add average across countries
+  bind_rows(costs_operations%>%
+              group_by(DEST = "average")%>%
+              summarise(across(where(is.numeric), ~ sum(., na.rm=T))))%>%
+  mutate(FX_CONTRIB_PP = EUR / N_RETURNEES)%>%
+  arrange(desc(FX_CONTRIB_PP))%>%
+  mutate(DEST = case_when(
+    DEST == "Congo, The Democratic Republic Of The" ~ "Congo DR",
+    TRUE ~ DEST
+  ))%>%
+  # add ISO-codes for X-axis labels from world bank data
+  left_join(wb_countries() %>% 
+              select(iso = iso2c, country_name = country)%>%
+              mutate(country_name = str_replace_all(country_name, 
+                                                    c("Congo, Dem\\. Rep\\." = "Congo DR",
+                                                      "Gambia, The" = "Gambia",
+                                                      "Vietnam" = "Viet Nam",
+                                                      "Turkiye" = "Turkey",
+                                                      "Egypt, Arab Rep\\." = "Egypt",
+                                                      "Russian Federation" = "Russia"
+                                                    ))),
+            by = c("DEST" = "country_name"))%>%
+  mutate(iso = case_when(DEST == "average across all destinations" ~ "∅", 
+                         TRUE ~ iso))%>%
+  # only include those with at least 10 returnees, otherwise maybe distorted
+  filter(N_RETURNEES >= 10)%>%
+  head(26)
+
+write_csv(CONTRIB_PP_BY_DEST, "../clean_data/CONTRIB_PP_BY_DEST_new.csv")
