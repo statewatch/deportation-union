@@ -37,19 +37,19 @@
       </p>
     </div>
     <div class="caption">
-      <p>Notes:<br>
+      <p>
+        Notes:<br />
         When the same operation ID is used for multiple dates, they are counted
         as different operations. Only operations taking place the same day and
         sharing an ID are counted as the same operation.
-        <br>
-        The data contains the abbreviations VRD, VDO
-        and "Humanitarian VR". Frontex did not respond to questions on what
-        exactly these stand for. "Humanitarian VR" is presumably "humanitarian
-        voluntary return," while the VR in VRD may also stand for voluntary
-        return. However, the precise meaning cannot be confirmed without a
-        statement from the agency. For some operations, no operation type was
-        provided. If the return operation ID (RO-ID) starts with "VRD", "VRD" was
-        used as operation type.
+        <br />
+        The data contains the abbreviations VRD, VDO and "Humanitarian VR".
+        Frontex did not respond to questions on what exactly these stand for.
+        "Humanitarian VR" is presumably "humanitarian voluntary return," while
+        the VR in VRD may also stand for voluntary return. However, the precise
+        meaning cannot be confirmed without a statement from the agency. For
+        some operations, no operation type was provided. If the return operation
+        ID (RO-ID) starts with "VRD", "VRD" was used as operation type.
       </p>
     </div>
 
@@ -84,7 +84,9 @@
         var svg = d3.select("#chart"),
           margin = { top: 20, left: 70, bottom: 10, right: 30 },
           width = window.innerWidth - margin.left - margin.right,
-          height = isMobile ? (window.innerHeight - margin.top - margin.bottom - 500) : (window.innerHeight - margin.top - margin.bottom - 380);
+          height = isMobile
+            ? window.innerHeight - margin.top - margin.bottom - 500
+            : window.innerHeight - margin.top - margin.bottom - 380;
         // -100 height to leave space for the selector within iframe
 
         svg
@@ -115,9 +117,14 @@
         var z = d3
           .scaleOrdinal()
           .range([
-            '#364497', '#5a61aa', '#7980bd', '#b6c1e3',
+            "#364497",
+            "#5a61aa",
+            "#7980bd",
+            "#b6c1e3",
             "#faa84b",
-            '#c17467', '#ab4835', '#900f04',
+            "#c17467",
+            "#ab4835",
+            "#900f04",
             "#a8a8a8",
           ])
           .domain([
@@ -222,18 +229,18 @@
                 .html(
                   "<div class = 'tooltip-title'>" +
                     "<strong>" +
-                      subgroupName +
+                    subgroupName +
                     "</strong>" +
                     "</div>" +
                     "<div class = 'tooltip-content'>" +
                     "<strong>" +
                     delta +
                     "</strong>" +
-                    " ("+
+                    " (" +
                     menu.property("value") +
-                    " "+
+                    " " +
                     +d.data.YEAR +
-                    ")"+
+                    ")" +
                     "</div>"
                 );
             })

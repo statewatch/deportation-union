@@ -75,7 +75,7 @@
         var svg = d3.select("#chart"),
           margin = { top: 20, left: 70, bottom: 10, right: 30 },
           width = window.innerWidth - margin.left - margin.right,
-          height = window.innerHeight - margin.top - margin.bottom - 300;
+          height = window.innerHeight - margin.top - margin.bottom - 280;
         // -100 height to leave space for the selector within iframe
 
         svg
@@ -106,7 +106,13 @@
         var z = d3
           .scaleOrdinal()
           .range([
-         '#faa84b', '#e39b5b', '#cb8f68', '#b28274', '#98767f', '#7c6b8a', '#5a6093',
+            "#faa84b",
+            "#e39b5b",
+            "#cb8f68",
+            "#b28274",
+            "#98767f",
+            "#7c6b8a",
+            "#5a6093",
           ])
           .domain(keys.slice(0, 7))
           .unknown("#5a6093");
@@ -204,10 +210,9 @@
                 .style("top", d3.event.pageY + "px")
                 .style("display", "inline-block")
                 .html(
-                  
-                    "<div class = 'tooltip-content'>" +
-                      "<strong>" +
-                      delta +
+                  "<div class = 'tooltip-content'>" +
+                    "<strong>" +
+                    delta +
                     "</strong>" +
                     " persons deported from " +
                     "<strong>" +

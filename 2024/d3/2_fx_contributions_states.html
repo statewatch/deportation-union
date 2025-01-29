@@ -14,7 +14,8 @@
       participating in deportation operations coordinated by the agency. This
       graphic shows how much each participating member state has received each
       year. As the biggest user of Frontex-coordinated deportation operations,
-      Germany remains by far the biggest recipient of these fund, claiming back well over €150 million since 2008.
+      Germany remains by far the biggest recipient of these fund, claiming back
+      well over €150 million since 2008.
     </p>
 
     <div class="menu">
@@ -107,7 +108,13 @@
         var z = d3
           .scaleOrdinal()
           .range([
-'#364497', '#625696', '#856a95', '#a37f93', '#c19590', '#deab8d', '#fac288',
+            "#364497",
+            "#625696",
+            "#856a95",
+            "#a37f93",
+            "#c19590",
+            "#deab8d",
+            "#fac288",
           ])
           .domain(keys.slice(0, 7))
           .unknown("#fac288");
@@ -218,7 +225,7 @@
                     ":</strong> " +
                     "<br>" +
                     "<strong>" +
-                      d3.format("$,.0f")(delta) +
+                    d3.format("$,.0f")(delta) +
                     "</strong>" +
                     "</div>" +
                     "<div class = 'tooltip-content'>" +

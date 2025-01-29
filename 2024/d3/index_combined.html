@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>iframes overview</title>
     <style>
       body {
@@ -14,46 +14,55 @@
         margin: 0px auto;
       }
 
-      @media (min-width: 768px) {
-        /* Desktop styles */
-        iframe.height1000 {
-          height: 1200px; /* Use the specified height from the iframe tag */
-        }
-        iframe.height600 {
-          height: 600px; /* Use the specified height from the iframe tag */
-        }
-        iframe.height700 {
-          height: 700px; /* Use the specified height from the iframe tag */
-        }
+      iframe.height1000 {
+        height: 1200px; /* Use the specified height from the iframe tag */
       }
-
-      @media (max-width: 767px) {
-        /* Mobile styles */
-        iframe.height1000 {
-          height: 100vh; /* Use the specified height from the iframe tag */
-        }
-        iframe.height600 {
-          height: 70vh; /* Use the specified height from the iframe tag */
-        }
-        iframe.height700 {
-          height: 90vh; /* Use the specified height from the iframe tag */
-        }
+      iframe.height600 {
+        height: 600px; /* Use the specified height from the iframe tag */
+      }
+      iframe.height700 {
+        height: 700px; /* Use the specified height from the iframe tag */
       }
     </style>
   </head>
   <body>
-    <div id = "wrapper">
-    <!-- <link href="stylesheet.css" rel="stylesheet" type="text/css"> -->
-    <h3></h3>
-    <iframe class = "height1000" src="0_deportations_sankey.html" width="100%" height="1000" style="border:0px;"></iframe>
-    <h3></h3>
-    <iframe class = "height600" src="1_deportations_barchart.html" width="100%" height="600" style="border:0px;"></iframe>
-    <h3></h3>
-    <iframe class = "height600" src="2_fx_contributions_states.html" width="100%" height="500" style="border:0px;"></iframe>
-    <h3></h3>
-    <iframe class = "height600" src="3_fx_contributions_pp_dest.html" width="100%" height="500" style="border:0px;"></iframe>
-    <h3></h3>
-    <iframe class = "height700" src="4_operation_types.html" width="100%" height="500" style="border:0px;"></iframe>
-  </div>
+    <div id="wrapper">
+      <!-- <link href="stylesheet.css" rel="stylesheet" type="text/css"> -->
+      <h3></h3>
+      <iframe
+        class="height1000"
+        src="0_deportations_sankey.html"
+        width="100%"
+        style="border: 0px"
+      ></iframe>
+      <h3></h3>
+      <iframe
+        class="height600"
+        src="1_deportations_barchart.html"
+        width="100%"
+        style="border: 0px"
+      ></iframe>
+      <h3></h3>
+      <iframe
+        class="height600"
+        src="2_fx_contributions_states.html"
+        width="100%"
+        style="border: 0px"
+      ></iframe>
+      <h3></h3>
+      <iframe
+        class="height600"
+        src="3_fx_contributions_pp_dest.html"
+        width="100%"
+        style="border: 0px"
+      ></iframe>
+      <h3></h3>
+      <iframe
+        class="height700"
+        src="4_operation_types.html"
+        width="100%"
+        style="border: 0px"
+      ></iframe>
+    </div>
   </body>
 </html>
