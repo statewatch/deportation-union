@@ -22,7 +22,14 @@
 
   <body>
     <link href="stylesheet.css" rel="stylesheet" type="text/css" />
-    <!-- <p>Select the series to display: <select id="KEY"></select></p> -->
+    <h3>Deporting states and destination states</h3>
+    <p>
+      This graphic provides a visual representation of the 15 EU member states
+      most invested in Frontex’s deportation operations, and the 15 most popular
+      destinations for those operations. Germany is by far and away the biggest
+      user of Frontex’s services, and Albania the primary destination for
+      Frontex-coordinated deportations.
+    </p>
 
     <svg id="chart"></svg>
 
@@ -37,7 +44,7 @@
     </div>
     <div class="caption">
       <p>
-        Number of deported persons in the time frame between 2006 and 2022 by
+        Number of deported persons in the time frame between 2006 and 2023 by
         deporting EU member states and destinations. This graphic only includes
         the 15 EU states and the 15 destinations with the largest number of
         deportations in the time period. Both EU states (on the left) as well as
@@ -46,9 +53,9 @@
     </div>
 
     <script>
-      var margin = { top: 10, right: 10, bottom: 10, left: 10 },
+      var margin = { top: 20, right: 20, bottom: 20, left: 20 },
         width = window.innerWidth - margin.left - margin.right,
-        height = window.innerHeight - margin.top - margin.bottom - 200;
+        height = window.innerHeight - margin.top - margin.bottom - 290;
       // -100 height to leave space for the selector within iframe
 
       var svg = d3
@@ -64,21 +71,21 @@
         color = d3.scale
           .ordinal()
           .range([
-            "#ff8c00",
-            "#eb8411",
-            "#d67d22",
-            "#c27533",
-            "#ae6d45",
-            "#9a6556",
-            "#855e67",
-            "#715678",
-            "#776283",
-            "#7c6e8e",
-            "#827a99",
-            "#8787a4",
-            "#8d93af",
-            "#929fba",
-            "#98abc5",
+            "#faa84b",
+            "#f1a355",
+            "#e99e5e",
+            "#e09a67",
+            "#d7956f",
+            "#cd9176",
+            "#c48c7e",
+            "#ba8885",
+            "#af838c",
+            "#a47f93",
+            "#997b9a",
+            "#8d77a1",
+            "#7f73a8",
+            "#706fae",
+            "#5e6bb5",
           ]);
 
       var sankey = d3
@@ -156,25 +163,17 @@
                 .style("top", d3.event.pageY + "px")
                 .style("display", "inline-block")
                 .html(
-                  "<div class = 'tooltip-title'>" +
-                    "Persons deported " +
-                    "<br>" +
-                    "from " +
-                    "<strong>" +
-                    d.source.name +
-                    "</strong>" +
-                    "<br>" +
-                    "to " +
-                    "<strong>" +
-                    d.target.name +
-                    "</strong>" +
-                    "</div>" +
-                    "<div class = 'tooltip-content'>" +
+                  "<div class = 'tooltip-content'>" +
                     "<strong>" +
                     formatNumber(d.value) +
-                    "</strong>" +
-                    "<br>" +
-                    "(between 2006 and 2022)" +
+                    "</strong> " +
+                    "persons deported from " +
+                    "<strong>" +
+                    d.source.name +
+                    "</strong> to " +
+                    "<strong>" +
+                    d.target.name +
+                    "</strong> (between 2006 and 2023)" +
                     "</div>"
                 );
             })
@@ -221,7 +220,7 @@
           // add in the title for the nodes
           node
             .append("text")
-            .attr("class", "sankey_label")
+            .attr("class", "text_label")
             .attr("x", -6)
             .attr("y", function (d) {
               return d.dy / 2;

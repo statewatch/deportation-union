@@ -1,32 +1,46 @@
 <!--https://bl.ocks.org/LemoNode/21d81ff82e80cbe4acbfee28ff060b11-->
 <html>
   <head>
-    <title>4 - types operations</title>
+    <title>2 - contributions</title>
     <meta charset="utf-8" />
     <script src="https://d3js.org/d3.v5.min.js"></script>
   </head>
 
   <body>
     <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+    <h3>Frontex’s financial contributions to member states</h3>
     <p>
-      Select the series to display:
-      <select id="KEY"></select>
+      Member states can claim back from Frontex the costs they incur for
+      participating in deportation operations coordinated by the agency. This
+      graphic shows how much each participating member state has received each
+      year. As the biggest user of Frontex-coordinated deportation operations,
+      Germany remains by far the biggest recipient of these fund, claiming back well over €150 million since 2008.
     </p>
+
+    <div class="menu">
+      <p>
+        Frontex contributions to
+        <select id="MSNAME"></select>
+      </p>
+    </div>
 
     <svg id="chart"></svg>
 
     <div class="caption">
       <p>
-        <a href="../clean_data/OPTYPE_YEAR_new.csv" target="_blank"
+        <a href="../clean_data/FX_CONTRIB_YEARS_MSNAME_new.csv" target="_blank"
           >Get the raw data behind this visualisation</a
         >
       </p>
     </div>
     <div class="caption">
       <p>
-        Note: When the same operation ID is used for multiple dates, they are
-        counted as different operations. Only operations taking place the same
-        day and sharing an ID are counted as the same operation.
+        Frontex contributions for return operations by year and EU member state.
+        Bars are arranged by the total amount of money recieved across years
+        (bottom bar is Germany, Germany has recieved the largest amount of
+        contributions in the time period, second bar is Spain, Spain has
+        recieved the second largest amount of contributions in the time period,
+        a.s.o.)
       </p>
     </div>
 
@@ -40,27 +54,29 @@
 
       var isMobile = window.innerWidth < 768;
 
-      var menu = d3.select("#KEY");
+      var menu = d3.select("#MSNAME");
 
-      d3.csv("../clean_data/OPTYPE_YEAR_new.csv").then((d) => chart(d));
+      d3.csv("../clean_data/FX_CONTRIB_YEARS_MSNAME_new.csv").then((d) =>
+        chart(d)
+      );
 
       function chart(csv) {
         var keys = csv.columns.slice(2);
 
-        var KEY = [...new Set(csv.map((d) => d.KEY))];
+        var MSNAMEs = [...new Set(csv.map((d) => d.MSNAME))];
 
         var options = d3
-          .select("#KEY")
+          .select("#MSNAME")
           .selectAll("option")
-          .data(KEY)
+          .data(MSNAMEs)
           .enter()
           .append("option")
           .text((d) => d);
 
         var svg = d3.select("#chart"),
-          margin = { top: 20, left: 60, bottom: 30, right: 15 },
+          margin = { top: 20, left: 65, bottom: 10, right: 30 },
           width = window.innerWidth - margin.left - margin.right,
-          height = window.innerHeight - margin.top - margin.bottom - 200;
+          height = window.innerHeight - margin.top - margin.bottom - 300;
         // -100 height to leave space for the selector within iframe
 
         svg
@@ -91,45 +107,38 @@
         var z = d3
           .scaleOrdinal()
           .range([
-            "#7a6989",
-            "#a9b4c5",
-            "#ed9c41",
-            "#a95400",
-            "#a95400",
-            "#a95400",
-            "#a95400",
+'#364497', '#625696', '#856a95', '#a37f93', '#c19590', '#deab8d', '#fac288',
           ])
-          .domain([
-            "JRO",
-            "CRO",
-            "NRO",
-            "VDO",
-            "VRD",
-            "FRONTEX-RO",
-            "Humanitarian VR",
-            "unknown",
-          ]);
+          .domain(keys.slice(0, 7))
+          .unknown("#fac288");
 
-        update(d3.select("#KEY").property("value"), 0);
+        update(d3.select("#MSNAME").property("value"), 0);
 
         function update(input, speed) {
-          var data = csv.filter((f) => f.KEY == input);
+          var data = csv.filter((f) => f.MSNAME == input);
 
           data.forEach(function (d) {
             d.total = d3.sum(keys, (k) => +d[k]);
             return d;
           });
 
-          console.log(data);
-
           y.domain([d3.max(data, (d) => d.total), 0]).nice();
           svg
             .selectAll(".y-axis")
             .transition()
             .duration(speed)
-            .call(d3.axisLeft(y));
+            .call(
+              d3
+                .axisLeft(y)
+                .tickFormat((d) => d3.format("$,.0s")(d))
+                .ticks(7)
+            );
 
-          x.domain(data.map((d) => d.YEAR));
+          // Extract unique years from the dataset
+          var years = [...new Set(csv.map((d) => +d.YEAR))];
+
+          x.domain(years);
+
           svg
             .selectAll(".x-axis")
             .transition()
@@ -168,6 +177,8 @@
             .enter()
             .append("rect")
             .attr("width", x.bandwidth())
+            .attr("stroke", "white")
+            .attr("stroke-width", 0)
             .merge(bars)
             .transition()
             .duration(speed)
@@ -201,17 +212,23 @@
                 .style("display", "inline-block")
                 .html(
                   "<div class = 'tooltip-title'>" +
-                    menu.property("value") +
-                    "<br>" +
-                    "in " +
-                    +d.data.YEAR +
-                    "</div>" +
-                    "<div class = 'tooltip-content'>" +
+                    "Frontex contributions <br>to " +
+                    "<strong>" +
                     subgroupName +
-                    ":" +
+                    ":</strong> " +
                     "<br>" +
                     "<strong>" +
-                    delta +
+                      d3.format("$,.0f")(delta) +
+                    "</strong>" +
+                    "</div>" +
+                    "<div class = 'tooltip-content'>" +
+                    "total " +
+                    "(" +
+                    d.data.YEAR +
+                    "):" +
+                    "<br>" +
+                    "<strong>" +
+                    d3.format("$,.0f")(d.data.total) +
                     "</strong>" +
                     "</div>"
                 );
@@ -231,30 +248,10 @@
               d3.select(".tooltip").style("display", "none");
               d3.select(this).attr("stroke", "white").attr("stroke-width", 0);
             });
-
-          var text = svg.selectAll(".text").data(data, (d) => d.YEAR);
-
-          text.exit().remove();
-
-          text
-            .enter()
-            .append("text")
-            .attr("class", "mobile-hidden text")
-            .attr("text-anchor", "middle")
-            .merge(text)
-            .transition()
-            .duration(speed)
-            .attr("x", (d) => x(d.YEAR) + x.bandwidth() / 2)
-            .attr("y", (d) => y(d.total) - 5)
-            .text((d) => d.total);
         }
 
-        var select = d3.select("#KEY").on("change", function () {
+        var select = d3.select("#MSNAME").on("change", function () {
           update(this.value, 750);
-        });
-
-        var checkbox = d3.select("#sort").on("click", function () {
-          update(select.property("value"), 750);
         });
       }
     </script>

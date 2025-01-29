@@ -19,7 +19,7 @@
 
     <div class="caption">
       <p>
-        <a href="https://raw.githubusercontent.com/statewatch/deportation-union-2022/main/clean_data/N_RETURNEES_YEARS_MSNAME_new.csv" target="_blank"
+        <a href="../clean_data/N_RETURNEES_YEARS_MSNAME_new.csv" target="_blank"
           >Get the raw data behind this visualisation</a
         >
       </p>
@@ -46,7 +46,7 @@
 
       var menu = d3.select("#DEST");
 
-      d3.csv("https://raw.githubusercontent.com/statewatch/deportation-union-2022/main/clean_data/N_RETURNEES_YEARS_MSNAME_new.csv").then((d) =>
+      d3.csv("../clean_data/N_RETURNEES_YEARS_MSNAME_new.csv").then((d) =>
         chart(d)
       );
 
@@ -107,7 +107,7 @@
             "#8b8fab",
             "#98abc5",
           ])
-          .domain(keys.slice(0,7))
+          .domain(keys.slice(0, 7))
           .unknown("#bac5d6");
 
         update(d3.select("#DEST").property("value"), 0);

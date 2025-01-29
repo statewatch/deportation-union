@@ -8,6 +8,14 @@
 
   <body>
     <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+    <h3>Costs per deportee by destination state</h3>
+    <p>
+      The financial cost of deporting somebody differs depending on the
+      destination state, as shown in this chart. Burundi is by far the most
+      expensive destination state, though according to the figures provided by
+      Frontex for this update there have been no Frontex-coordinated operations
+      to that country since 2010. The average cost per deportee across all destinations is €7,266.
+    </p>
 
     <svg id="chart"></svg>
 
@@ -47,12 +55,10 @@
           return d;
         });
 
-        console.log(data);
-
         var svg = d3.select("#chart"),
-          margin = { top: 20, left: 50, bottom: 70, right: 15 },
+          margin = { top: 20, left: 60, bottom: 70, right: 30 },
           width = window.innerWidth - margin.left - margin.right,
-          height = window.innerHeight - margin.top - margin.bottom - 170;
+          height = window.innerHeight - margin.top - margin.bottom - 200;
         // -100 height to leave space for the selector within iframe
 
         svg
@@ -90,9 +96,9 @@
 
         var z = d3
           .scaleOrdinal()
-          .range(["#d5791f"])
+          .range(["#faa84b"])
           .domain(["average"])
-          .unknown("#7a6989");
+          .unknown("#364497");
 
         data.forEach(function (d) {
           d.FX_CONTRIB_PP = +d.FX_CONTRIB_PP;
@@ -107,11 +113,12 @@
           .selectAll(".x-axis")
           .call(d3.axisBottom(x))
           .selectAll("text") // Select all x-axis tick labels
+          .attr("class", "text_label")
           .style("text-anchor", "end")
           .attr("dx", "-.8em")
           .attr("dy", "-.3em")
           .attr("dy", "-.3em")
-          .style("font-size", isMobile ? "0.7rem" : "0.85rem")
+          .style("font-size", isMobile ? "0.65rem" : "0.8rem")
           .attr("transform", "rotate(-90)");
 
         svg

@@ -19,7 +19,7 @@
 
     <div class="caption">
       <p>
-        <a href="https://raw.githubusercontent.com/statewatch/deportation-union-2022/main/clean_data/FX_CONTRIB_YEARS_MSNAME_new.csv" target="_blank"
+        <a href="../clean_data/FX_CONTRIB_YEARS_MSNAME_new.csv" target="_blank"
           >Get the raw data behind this visualisation</a
         >
       </p>
@@ -47,7 +47,7 @@
 
       var menu = d3.select("#MSNAME");
 
-      d3.csv("https://raw.githubusercontent.com/statewatch/deportation-union-2022/main/clean_data/FX_CONTRIB_YEARS_MSNAME_new.csv").then((d) =>
+      d3.csv("../clean_data/FX_CONTRIB_YEARS_MSNAME_new.csv").then((d) =>
         chart(d)
       );
 
@@ -55,7 +55,7 @@
         var keys = csv.columns.slice(2);
 
         var MSNAMEs = [...new Set(csv.map((d) => d.MSNAME))];
-        
+
         var options = d3
           .select("#MSNAME")
           .selectAll("option")

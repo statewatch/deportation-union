@@ -1,32 +1,44 @@
 <!--https://bl.ocks.org/LemoNode/21d81ff82e80cbe4acbfee28ff060b11-->
 <html>
   <head>
-    <title>4 - types operations</title>
+    <title>1 - deportations</title>
     <meta charset="utf-8" />
     <script src="https://d3js.org/d3.v5.min.js"></script>
   </head>
 
   <body>
     <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+    <h3>Deportations by year, EU member states and destination states</h3>
     <p>
-      Select the series to display:
-      <select id="KEY"></select>
+      This graphic makes it possible to examine in more detail the member states
+      involved in Frontex-coordinated deportations to particular destinations.
+      For example: Germany is the only state to have deported anyone to
+      Azerbaijan via a Frontex-coordinated operation since 2019.
     </p>
+
+    <div class="menu">
+      <p>
+        Persons returned to
+        <select id="DEST"></select>
+      </p>
+    </div>
 
     <svg id="chart"></svg>
 
     <div class="caption">
       <p>
-        <a href="../clean_data/OPTYPE_YEAR_new.csv" target="_blank"
+        <a href="../clean_data/N_RETURNEES_YEARS_MSNAME_new.csv" target="_blank"
           >Get the raw data behind this visualisation</a
         >
       </p>
     </div>
     <div class="caption">
       <p>
-        Note: When the same operation ID is used for multiple dates, they are
-        counted as different operations. Only operations taking place the same
-        day and sharing an ID are counted as the same operation.
+        Number of deported persons by year and deporting EU member state. Bars
+        are arranged by the total number of deportations across years (bottom
+        bar is Germany, Germany has deported the largest number of people in the
+        time period, second bar is Italy, Italy has deported the second largest
+        number of people in the time period, a.s.o.)
       </p>
     </div>
 
@@ -40,27 +52,30 @@
 
       var isMobile = window.innerWidth < 768;
 
-      var menu = d3.select("#KEY");
+      var menu = d3.select("#DEST");
 
-      d3.csv("../clean_data/OPTYPE_YEAR_new.csv").then((d) => chart(d));
+      d3.csv("../clean_data/N_RETURNEES_YEARS_MSNAME_new.csv").then((d) =>
+        chart(d)
+      );
 
       function chart(csv) {
         var keys = csv.columns.slice(2);
 
-        var KEY = [...new Set(csv.map((d) => d.KEY))];
+        var DESTs = [...new Set(csv.map((d) => d.DEST))];
+        var YEARs = [...new Set(csv.map((d) => d.YEAR))];
 
         var options = d3
-          .select("#KEY")
+          .select("#DEST")
           .selectAll("option")
-          .data(KEY)
+          .data(DESTs)
           .enter()
           .append("option")
           .text((d) => d);
 
         var svg = d3.select("#chart"),
-          margin = { top: 20, left: 60, bottom: 30, right: 15 },
+          margin = { top: 20, left: 70, bottom: 10, right: 30 },
           width = window.innerWidth - margin.left - margin.right,
-          height = window.innerHeight - margin.top - margin.bottom - 200;
+          height = window.innerHeight - margin.top - margin.bottom - 300;
         // -100 height to leave space for the selector within iframe
 
         svg
@@ -91,36 +106,23 @@
         var z = d3
           .scaleOrdinal()
           .range([
-            "#7a6989",
-            "#a9b4c5",
-            "#ed9c41",
-            "#a95400",
-            "#a95400",
-            "#a95400",
-            "#a95400",
+         '#faa84b', '#e39b5b', '#cb8f68', '#b28274', '#98767f', '#7c6b8a', '#5a6093',
           ])
-          .domain([
-            "JRO",
-            "CRO",
-            "NRO",
-            "VDO",
-            "VRD",
-            "FRONTEX-RO",
-            "Humanitarian VR",
-            "unknown",
-          ]);
+          .domain(keys.slice(0, 7))
+          .unknown("#5a6093");
 
-        update(d3.select("#KEY").property("value"), 0);
+        update(d3.select("#DEST").property("value"), 0);
 
         function update(input, speed) {
-          var data = csv.filter((f) => f.KEY == input);
+          var data = csv.filter((f) => f.DEST == input);
 
           data.forEach(function (d) {
             d.total = d3.sum(keys, (k) => +d[k]);
             return d;
           });
 
-          console.log(data);
+          // Extract unique years from the dataset
+          var years = [...new Set(csv.map((d) => +d.YEAR))];
 
           y.domain([d3.max(data, (d) => d.total), 0]).nice();
           svg
@@ -129,7 +131,9 @@
             .duration(speed)
             .call(d3.axisLeft(y));
 
-          x.domain(data.map((d) => d.YEAR));
+          // Set the domain of x scale to the extracted years
+          x.domain(years);
+
           svg
             .selectAll(".x-axis")
             .transition()
@@ -200,19 +204,24 @@
                 .style("top", d3.event.pageY + "px")
                 .style("display", "inline-block")
                 .html(
-                  "<div class = 'tooltip-title'>" +
-                    menu.property("value") +
-                    "<br>" +
-                    "in " +
-                    +d.data.YEAR +
-                    "</div>" +
+                  
                     "<div class = 'tooltip-content'>" +
+                      "<strong>" +
+                      delta +
+                    "</strong>" +
+                    " persons deported from " +
+                    "<strong>" +
                     subgroupName +
-                    ":" +
+                    "</strong>" +
+                    " to " +
                     "<br>" +
                     "<strong>" +
-                    delta +
+                    menu.property("value") +
                     "</strong>" +
+                    "<br>" +
+                    "in " +
+                    d.data.YEAR +
+                    "<strong>" +
                     "</div>"
                 );
             })
@@ -239,7 +248,7 @@
           text
             .enter()
             .append("text")
-            .attr("class", "mobile-hidden text")
+            .attr("class", "text mobile-hidden") // Combine both classes
             .attr("text-anchor", "middle")
             .merge(text)
             .transition()
@@ -249,7 +258,7 @@
             .text((d) => d.total);
         }
 
-        var select = d3.select("#KEY").on("change", function () {
+        var select = d3.select("#DEST").on("change", function () {
           update(this.value, 750);
         });
 

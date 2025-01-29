@@ -8,8 +8,22 @@
 
   <body>
     <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+
+    <h3>
+      Number of operations and people deported, by year and operation type
+    </h3>
     <p>
-      Select the series to display:
+      This chart shows the number of people deported and the number of
+      deportation operations, by year and operation type. For joint return
+      operations (JROs), Frontex coordinates the actions of multiple member
+      states who wish to deport people to one or more destinations. National
+      return operations involve just one EU member state, but Frontex
+      nevertheless plays a coordinating and financing role. Collecting return
+      operations involve a plane and staff from the destination state travelling
+      to the EU to pick up deportees.
+    </p>
+
+    <p>
       <select id="KEY"></select>
     </p>
 
@@ -23,10 +37,19 @@
       </p>
     </div>
     <div class="caption">
-      <p>
-        Note: When the same operation ID is used for multiple dates, they are
-        counted as different operations. Only operations taking place the same
-        day and sharing an ID are counted as the same operation.
+      <p>Notes:<br>
+        When the same operation ID is used for multiple dates, they are counted
+        as different operations. Only operations taking place the same day and
+        sharing an ID are counted as the same operation.
+        <br>
+        The data contains the abbreviations VRD, VDO
+        and "Humanitarian VR". Frontex did not respond to questions on what
+        exactly these stand for. "Humanitarian VR" is presumably "humanitarian
+        voluntary return," while the VR in VRD may also stand for voluntary
+        return. However, the precise meaning cannot be confirmed without a
+        statement from the agency. For some operations, no operation type was
+        provided. If the return operation ID (RO-ID) starts with "VRD", "VRD" was
+        used as operation type.
       </p>
     </div>
 
@@ -38,6 +61,7 @@
         currency: ["€", ""],
       });
 
+      // is not working because of scale being set to desktop
       var isMobile = window.innerWidth < 768;
 
       var menu = d3.select("#KEY");
@@ -58,9 +82,9 @@
           .text((d) => d);
 
         var svg = d3.select("#chart"),
-          margin = { top: 20, left: 60, bottom: 30, right: 15 },
+          margin = { top: 20, left: 70, bottom: 10, right: 30 },
           width = window.innerWidth - margin.left - margin.right,
-          height = window.innerHeight - margin.top - margin.bottom - 200;
+          height = isMobile ? (window.innerHeight - margin.top - margin.bottom - 500) : (window.innerHeight - margin.top - margin.bottom - 380);
         // -100 height to leave space for the selector within iframe
 
         svg
@@ -91,21 +115,19 @@
         var z = d3
           .scaleOrdinal()
           .range([
-            "#7a6989",
-            "#a9b4c5",
-            "#ed9c41",
-            "#a95400",
-            "#a95400",
-            "#a95400",
-            "#a95400",
+            '#364497', '#5a61aa', '#7980bd', '#b6c1e3',
+            "#faa84b",
+            '#c17467', '#ab4835', '#900f04',
+            "#a8a8a8",
           ])
           .domain([
             "JRO",
-            "CRO",
+            "JRO (FRONTEX-RO)",
+            "FRONTEX-RO",
             "NRO",
+            "CRO",
             "VDO",
             "VRD",
-            "FRONTEX-RO",
             "Humanitarian VR",
             "unknown",
           ]);
@@ -119,8 +141,6 @@
             d.total = d3.sum(keys, (k) => +d[k]);
             return d;
           });
-
-          console.log(data);
 
           y.domain([d3.max(data, (d) => d.total), 0]).nice();
           svg
@@ -201,18 +221,19 @@
                 .style("display", "inline-block")
                 .html(
                   "<div class = 'tooltip-title'>" +
-                    menu.property("value") +
-                    "<br>" +
-                    "in " +
-                    +d.data.YEAR +
+                    "<strong>" +
+                      subgroupName +
+                    "</strong>" +
                     "</div>" +
                     "<div class = 'tooltip-content'>" +
-                    subgroupName +
-                    ":" +
-                    "<br>" +
                     "<strong>" +
                     delta +
                     "</strong>" +
+                    " ("+
+                    menu.property("value") +
+                    " "+
+                    +d.data.YEAR +
+                    ")"+
                     "</div>"
                 );
             })
