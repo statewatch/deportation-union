@@ -1,0 +1,8 @@
+needed output:
+
+- total deported people across years by start and destination
+- total deported people per year, start and destination (add "all destinations" as total)
+- frontex contributions per year and state
+- frontex contributions per destination per person
+- number of deported people per year per operation type
+- number of operations per year per operation type
