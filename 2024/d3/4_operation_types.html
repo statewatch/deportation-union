@@ -62,7 +62,7 @@
       });
 
       // is not working because of scale being set to desktop
-      var isMobile = window.innerWidth < 768;
+      var isMobile = window.innerWidth < 500;
 
       var menu = d3.select("#KEY");
 
@@ -82,11 +82,13 @@
           .text((d) => d);
 
         var svg = d3.select("#chart"),
-          margin = { top: 20, left: 70, bottom: 10, right: 30 },
+          margin = isMobile
+            ? { top: 20, left: 70, bottom: 20, right: 15 }
+            : { top: 20, left: 70, bottom: 10, right: 30 },
           width = window.innerWidth - margin.left - margin.right,
           height = isMobile
-            ? window.innerHeight - margin.top - margin.bottom - 500
-            : window.innerHeight - margin.top - margin.bottom - 380;
+            ? window.innerHeight - margin.top - margin.bottom - 540
+            : window.innerHeight - margin.top - margin.bottom - 445;
         // -100 height to leave space for the selector within iframe
 
         svg

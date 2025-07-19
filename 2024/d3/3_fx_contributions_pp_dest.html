@@ -15,7 +15,12 @@
       expensive destination state, though according to the figures provided by
       Frontex for this update there have been no Frontex-coordinated operations
       to that country since 2010. The average cost per deportee across all
-      destinations is €7,095, a slight decrease from the €7,464 in the <a href="https://www.statewatch.org/analyses/2024/frontex-and-deportations-2006-22/" target="_new">previous figures published</a>.
+      destinations is €7,095, a slight decrease from the €7,464 in the
+      <a
+        href="https://www.statewatch.org/analyses/2024/frontex-and-deportations-2006-22/"
+        target="_new"
+        >previous figures published</a
+      >.
     </p>
 
     <svg id="chart"></svg>
@@ -46,7 +51,7 @@
         currency: ["€", ""],
       });
 
-      var isMobile = window.innerWidth < 768;
+      var isMobile = window.innerWidth < 500;
 
       d3.csv("../clean_data/CONTRIB_PP_BY_DEST_new.csv").then((d) => chart(d));
 
@@ -57,10 +62,13 @@
         });
 
         var svg = d3.select("#chart"),
-          margin = { top: 20, left: 60, bottom: 70, right: 30 },
+          margin = isMobile
+            ? { top: 20, left: 55, bottom: 50, right: 15 }
+            : { top: 20, left: 60, bottom: 70, right: 30 },
           width = window.innerWidth - margin.left - margin.right,
-          height = window.innerHeight - margin.top - margin.bottom - 200;
-        // -100 height to leave space for the selector within iframe
+          height = isMobile
+            ? window.innerHeight - margin.top - margin.bottom - 350
+            : window.innerHeight - margin.top - margin.bottom - 250;
 
         svg
           .attr("width", width + margin.left) // margin.right should stay empty
@@ -117,8 +125,7 @@
           .attr("class", "text_label")
           .style("text-anchor", "end")
           .attr("dx", "-.8em")
-          .attr("dy", "-.3em")
-          .attr("dy", "-.3em")
+          .attr("dy", isMobile ? "-.5em" : "-.3em")
           .style("font-size", isMobile ? "0.65rem" : "0.8rem")
           .attr("transform", "rotate(-90)");
 

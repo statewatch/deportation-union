@@ -53,7 +53,7 @@
         currency: ["€", ""],
       });
 
-      var isMobile = window.innerWidth < 768;
+      var isMobile = window.innerWidth < 500;
 
       var menu = d3.select("#MSNAME");
 
@@ -75,10 +75,13 @@
           .text((d) => d);
 
         var svg = d3.select("#chart"),
-          margin = { top: 20, left: 65, bottom: 10, right: 30 },
+          margin = isMobile
+            ? { top: 20, left: 55, bottom: 20, right: 15 }
+            : { top: 20, left: 65, bottom: 10, right: 30 },
           width = window.innerWidth - margin.left - margin.right,
-          height = window.innerHeight - margin.top - margin.bottom - 300;
-        // -100 height to leave space for the selector within iframe
+          height = isMobile
+            ? window.innerHeight - margin.top - margin.bottom - 410
+            : window.innerHeight - margin.top - margin.bottom - 330;
 
         svg
           .attr("width", width + margin.left) // margin.right should stay empty

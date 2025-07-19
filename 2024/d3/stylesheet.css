@@ -84,8 +84,8 @@ svg > text {
 }
 
 .grey_labels > g > text {
-  font-weight: 600;
-  fill: #666;
+  /* font-weight: 600;
+  fill: #666; */
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -122,8 +122,21 @@ a:hover {
   display: block; /* Show the text on desktop */
 }
 
-@media (max-width: 767px) {
+@media (max-width: 500px) {
   .mobile-hidden {
     display: none; /* Hide the text on mobile */
+  }
+  h3 {
+    font-size: 18px;
+  }
+  p {
+    font-size: 0.9em;
+  }
+  .caption p {
+    font-size: 0.85em;
+  }
+  .tick > text {
+    font-size: 0.75rem;
+    font-family: monospace;
   }
 }

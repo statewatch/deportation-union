@@ -22,9 +22,15 @@
 
   <body>
     <link href="stylesheet.css" rel="stylesheet" type="text/css" />
-    
+
     <h3>Deporting states and destination states</h3>
-    <p>This graphic provides a visual representation of the 15 EU member states most invested in Frontex’s deportation operations, and the 15 most popular destinations for those operations. Germany remains by far the biggest user of Frontex’s services, and Albania the primary destination for Frontex-coordinated deportations.</p>
+    <p>
+      This graphic provides a visual representation of the 15 EU member states
+      most invested in Frontex’s deportation operations, and the 15 most popular
+      destinations for those operations. Germany remains by far the biggest user
+      of Frontex’s services, and Albania the primary destination for
+      Frontex-coordinated deportations.
+    </p>
     <svg id="chart"></svg>
 
     <div class="caption">
@@ -47,13 +53,13 @@
     </div>
 
     <script>
-      var isMobile = window.innerWidth < 768;
+      var isMobile = window.innerWidth < 500;
 
       var margin = { top: 20, right: 20, bottom: 20, left: 20 },
         width = window.innerWidth - margin.left - margin.right,
         height = isMobile
-          ? window.innerHeight - margin.top - margin.bottom - 470
-          : window.innerHeight - margin.top - margin.bottom - 290;
+          ? window.innerHeight - margin.top - margin.bottom - 380
+          : window.innerHeight - margin.top - margin.bottom - 310;
 
       var svg = d3
         .select("#chart")

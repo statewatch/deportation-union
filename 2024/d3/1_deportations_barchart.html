@@ -12,7 +12,16 @@
     <p>
       This graphic makes it possible to examine in more detail the member states
       involved in Frontex-coordinated deportations to particular destinations.
-      For example, after several years of no deportation operations to Côte d'Ivoire, there was a restart in 2024, when 25 people were deported via Frontex operations. The data also shows  the effect of <a href="https://www.statewatch.org/news/2024/february/deportations-eu-considers-stepping-up-visa-sanctions-after-iraq-and-gambia-change-policies/" target="_new">visa sanctions on The Gambia and Iraq</a> can clearly be seen in the spikes in deporatation numbers in 2023 (The Gambia) and Iraq (2023 and 2024).
+      For example, after several years of no deportation operations to Côte
+      d'Ivoire, there was a restart in 2024, when 25 people were deported via
+      Frontex operations. The data also shows the effect of
+      <a
+        href="https://www.statewatch.org/news/2024/february/deportations-eu-considers-stepping-up-visa-sanctions-after-iraq-and-gambia-change-policies/"
+        target="_new"
+        >visa sanctions on The Gambia and Iraq</a
+      >
+      can clearly be seen in the spikes in deporatation numbers in 2023 (The
+      Gambia) and Iraq (2023 and 2024).
     </p>
 
     <div class="menu">
@@ -49,7 +58,7 @@
         currency: ["€", ""],
       });
 
-      var isMobile = window.innerWidth < 768;
+      var isMobile = window.innerWidth < 500;
 
       var menu = d3.select("#DEST");
 
@@ -72,11 +81,13 @@
           .text((d) => d);
 
         var svg = d3.select("#chart"),
-          margin = { top: 20, left: 70, bottom: 10, right: 30 },
+          margin = isMobile
+            ? { top: 20, left: 70, bottom: 20, right: 15 }
+            : { top: 20, left: 70, bottom: 10, right: 30 },
           width = window.innerWidth - margin.left - margin.right,
           height = isMobile
             ? window.innerHeight - margin.top - margin.bottom - 460
-            : window.innerHeight - margin.top - margin.bottom - 280;
+            : window.innerHeight - margin.top - margin.bottom - 370;
 
         svg
           .attr("width", width + margin.left) // margin.right should stay empty
