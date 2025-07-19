@@ -75,8 +75,9 @@
         var svg = d3.select("#chart"),
           margin = { top: 20, left: 70, bottom: 10, right: 30 },
           width = window.innerWidth - margin.left - margin.right,
-          height = window.innerHeight - margin.top - margin.bottom - 280;
-        // -100 height to leave space for the selector within iframe
+          height = isMobile
+            ? window.innerHeight - margin.top - margin.bottom - 460
+            : window.innerHeight - margin.top - margin.bottom - 280;
 
         svg
           .attr("width", width + margin.left) // margin.right should stay empty

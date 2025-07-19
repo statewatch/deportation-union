@@ -53,10 +53,13 @@
     </div>
 
     <script>
+      var isMobile = window.innerWidth < 768;
+
       var margin = { top: 20, right: 20, bottom: 20, left: 20 },
         width = window.innerWidth - margin.left - margin.right,
-        height = window.innerHeight - margin.top - margin.bottom - 290;
-      // -100 height to leave space for the selector within iframe
+        height = isMobile
+          ? window.innerHeight - margin.top - margin.bottom - 470
+          : window.innerHeight - margin.top - margin.bottom - 290;
 
       var svg = d3
         .select("#chart")
