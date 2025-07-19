@@ -55,7 +55,9 @@
     <script>
       var isMobile = window.innerWidth < 500;
 
-      var margin = { top: 20, right: 20, bottom: 20, left: 20 },
+      var margin = isMobile
+          ? { top: 20, right: 10, bottom: 20, left: 10 }
+          : { top: 20, right: 20, bottom: 20, left: 20 },
         width = window.innerWidth - margin.left - margin.right,
         height = isMobile
           ? window.innerHeight - margin.top - margin.bottom - 370

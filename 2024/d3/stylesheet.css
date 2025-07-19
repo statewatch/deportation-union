@@ -139,4 +139,11 @@ a:hover {
     font-size: 0.75rem;
     font-family: monospace;
   }
+
+  body > h3,
+  body > p,
+  body > .menu,
+  .caption > p {
+    margin: 1em 10px;
+  }
 }
