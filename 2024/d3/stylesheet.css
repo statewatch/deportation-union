@@ -5,9 +5,9 @@ body {
   margin: 0px; /*important so that margin calculations on iframes work*/
   font-size: 15px; /*standart size on statewatch website*/
   background-color: #f2f2f3;
+  line-height: 1.4;
 }
 
-body > h3,
 body > p,
 body > .menu,
 .caption > p {
@@ -16,6 +16,8 @@ body > .menu,
 
 h3 {
   font-size: 1.8rem;
+  margin: 20px 20px 0px 20px;
+  line-height: 1.1;
 }
 
 .line {
@@ -128,19 +130,24 @@ a:hover {
   }
   h3 {
     font-size: 18px;
+    margin: 15px 10px 0px 10px;
   }
   p {
     font-size: 0.9em;
   }
   .caption p {
-    font-size: 0.85em;
+    font-size: 0.8em;
+    line-height: 1.2;
+  }
+  .caption {
+    position: absolute;
+    bottom: 0;
   }
   .tick > text {
     font-size: 0.75rem;
     font-family: monospace;
   }
 
-  body > h3,
   body > p,
   body > .menu,
   .caption > p {

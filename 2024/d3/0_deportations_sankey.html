@@ -41,8 +41,7 @@
           >Get the raw data behind this visualisation</a
         >
       </p>
-    </div>
-    <div class="caption">
+
       <p>
         Number of deported persons in the time frame between 2006 and 2024 by
         deporting EU member states and destinations. This graphic only includes
@@ -60,8 +59,8 @@
           : { top: 20, right: 20, bottom: 20, left: 20 },
         width = window.innerWidth - margin.left - margin.right,
         height = isMobile
-          ? window.innerHeight - margin.top - margin.bottom - 370
-          : window.innerHeight - margin.top - margin.bottom - 315;
+          ? window.innerHeight - margin.top - margin.bottom - 365
+          : window.innerHeight - margin.top - margin.bottom - 320;
 
       var svg = d3
         .select("#chart")
