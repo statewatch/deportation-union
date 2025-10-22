@@ -9,7 +9,25 @@ per_deportation <- costs_operations %>%
   group_by(year = substr(DATE, 1, 4))%>%
   summarize(EUR = sum(EUR),
             N_RETURNEES = sum(N_RETURNEES))%>%
-  mutate(pp = EUR/N_RETURNEES)
+  mutate(pp = EUR/N_RETURNEES)%>%
+  rename(eur_total = EUR,
+         number_returned = N_RETURNEES,
+         avg_eur_per_person = pp)
+
+write_csv(per_deportation, "../clean_data/average_per_year.csv")
+
+per_deportation_country <- costs_operations %>%
+  group_by(year = substr(DATE, 1, 4), DEST)%>%
+  summarize(EUR = sum(EUR),
+            N_RETURNEES = sum(N_RETURNEES))%>%
+  mutate(pp = EUR/N_RETURNEES)%>%
+  rename(eur_total = EUR,
+         destination = DEST,
+         number_returned = N_RETURNEES,
+         avg_eur_per_person = pp)%>%
+  arrange(destination, year)
+
+write_csv(per_deportation_country, "../clean_data/average_per_year_dest.csv")
 
 returnees %>%
   group_by(ROID, DEST, DATE)%>%
